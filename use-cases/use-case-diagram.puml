@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor e as "employee"
+
+rectangle Database
+
+rectangle "Information System"{
+    usecase uc1 as "Get countries in a continent"
+    usecase uc1a as "sort from largest to smallest population"
+    usecase uc1b as "Print countries"
+
+    e - uc1
+    uc1 ..> uc1a : include
+    uc1a ..> uc1b : include
+    uc1 - Database
+
+}
+
+@enduml
