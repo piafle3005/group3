@@ -1,10 +1,10 @@
-# USE CASE: 11 Report of all the cities in a district organised by largest population to smallest.
+# USE CASE: 12 Report of all the top N populated cities in the world, where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the cities in a district organised by largest population to smallest.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the top N populated cities in the world, with N provided by the user.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-Valid entry of a district.
+Valid entry of N.
 
 ### Success End Condition
 
@@ -24,7 +24,7 @@ The report is available. Correct input and functionality of the required report.
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the cities in a given district.
+The report is not produced, and we didn't get the requested information about the top N populated cities in the world.
 
 ### Primary Actor
 
@@ -36,15 +36,15 @@ A request for cities' information is sent to the organisation the report is bein
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests population's information from a specific city in a given district.
-2. Employee requests the district to get population's information from.
-3. Employee extracts current cities' information of the given district.
+1. Employee requests population's information about the top N populated cities in the world.
+2. Employee requests the N variable to get cities's information from.
+3. Employee extracts current population's information of the given N number of cities.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS
 
 3. **Invalid continent.**:
-    1. Employee is informed that the district is invalid and does not exist.
+    1. Employee is informed that the N variable is invalid and report can't be produced.
 
 ## SUB-VARIATIONS
 
