@@ -6,14 +6,23 @@ actor e as "employee"
 rectangle Database
 
 rectangle "Information System"{
-    usecase uc1 as "Get countries in a continent"
-    usecase uc1a as "sort from largest to smallest population"
-    usecase uc1b as "Print countries"
+    usecase uc as "Send the request"
+    usecase gi1 as "get the information"
+    usecase gi2 as "get the information"
+    usecase condition1 as "sort from largest to smallest population"
+    usecase condition2 as "N provied by the User"
+    usecase print as "Print Report/Data"
 
-    e - uc1
-    uc1 ..> uc1a : include
-    uc1a ..> uc1b : include
-    uc1 - Database
+    e - uc
+
+    uc ..> gi1: include
+    uc ..> condition2: include
+    gi1 ..> condition1: include
+    condition2 ..> gi2: include
+    condition1 ..> print : extend
+    gi2 ..> print : extend
+    uc ..> print : extend
+    uc - Database: extend
 
 }
 
