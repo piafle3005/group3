@@ -1,10 +1,11 @@
-# USE CASE: 21 Report of the top N populated capital cities in the world where N is provided by the user.
+# USE CASE: 21 Report of the top N populated capital cities in a continent where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the top N populated capital cities in the world, where N is provided by the user.
+As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the top N populated capital cities in a given continent, where N is provided by the user.
+
 ### Scope
 
 Organisation.
@@ -23,7 +24,7 @@ The report is available. Correct input and functionality of the required report(
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the top N populated capital cities in the world.
+The report is not produced, and we didn't get the requested information about the capital city population continent information.
 
 ### Primary Actor
 
@@ -31,13 +32,13 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for worlds top N capital city population information is sent to the organisation the report is being made for.
+A request for continents capital city population information is sent to the organisation the report is being made for.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests world population information.
-2. Employee requests the top N capital cities population information for the world.
-3. Employee extracts current capital city information of the world.
+1. Employee requests continent population information for continents in the world.
+2. Employee requests the top N capital cities population information for the continent.
+3. Employee extracts current capital city information of the continent.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS

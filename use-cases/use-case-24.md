@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the total population, population in cities, population not in cities, for all regions.
+As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the total population, population in cities, population not in cities, for all counties.
 
 ### Scope
 
@@ -24,7 +24,7 @@ The report is available. Correct input and functionality of the required report(
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the population city/not city region information.
+The report is not produced, and we didn't get the requested information about the population city/not city country information.
 
 ### Primary Actor
 
@@ -32,13 +32,13 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for regions population information is sent to the organisation the report is being made for.
+A request for countries population information is sent to the organisation the report is being made for.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests region population information for regions in the world.
-2. Employee requests the city population information for the region.
-3. Employee extracts current city information of the region.
+1. Employee requests country population information for countries in the world.
+2. Employee requests the country to get population information for.
+3. Employee extracts current country information of the world.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS

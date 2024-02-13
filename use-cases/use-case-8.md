@@ -1,4 +1,4 @@
-# USE CASE: 2 Report of all cities in a continent organised by largest population to smallest.
+# USE CASE: 8 Report of all cities in a continent organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 

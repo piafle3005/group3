@@ -1,4 +1,4 @@
-# USE CASE: 17 Report of all the capital cities in the world, organised by largest population to smallest.
+# USE CASE: 16 Report of all the capital cities in the world, organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 

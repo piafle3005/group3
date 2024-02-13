@@ -1,10 +1,10 @@
-# USE CASE: 26 Report of the total population, population in cities, population not in cities, for all continents.
+# USE CASE: 26 Data of population of the world accessible to organisation.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the total population, population in cities, population not in cities, for all continents.
+As an employee that is working for an organisation that requires reporting on population information, I want world population data to be available to the organisation.
 
 ### Scope
 
@@ -16,15 +16,15 @@ Primary task.
 
 ### Preconditions
 
-Functionality of the reports. We don't require any input as this is just a complete list.
+Functionality of database.
 
 ### Success End Condition
 
-The report is available. Correct input and functionality of the required report(s).
+Data is available, and can therefore be used to generated reports on specific population information.
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested population city/not city continent information.
+Data is unavailable, and the organisation is unable to produce reports on specific population information.
 
 ### Primary Actor
 
@@ -32,14 +32,14 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for continents population information is sent to the organisation the report is being made for.
+A request for world population data is sent to the organisations population information database.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests continent population information for continents in the world.
-2. Employee requests the continent to get population information for.
-3. Employee extracts current continent information of the world.
-4. Employee provides the report to organisation.
+1. Employee requests world population information.
+2. Employee requests the world population data from the organisations' database.
+3. Employee extracts world population data from the database.
+4. Employee can share data with organisation, allowing for reports to be produced.
 
 ## EXTENSIONS
 

@@ -1,4 +1,4 @@
-# USE CASE: 16 Report of all the top N populated cities in a district, where N is provided by the user.
+# USE CASE: 15 Report of all the top N populated cities in a district, where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 

@@ -1,10 +1,10 @@
-# USE CASE: 23 Report of the top N populated capital cities in a region where N is provided by the user.
+# USE CASE: 23 Report of the total population, population in cities, population not in cities, for all countries.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the top N populated capital cities in a given region, where N is provided by the user.
+As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the total population, population in cities, population not in cities, for all regions.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-Valid entry of N.
+Functionality of the reports. We don't require any input as this is just a complete list.
 
 ### Success End Condition
 
@@ -24,7 +24,7 @@ The report is available. Correct input and functionality of the required report(
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the capital city population region information.
+The report is not produced, and we didn't get the requested information about the population city/not city region information.
 
 ### Primary Actor
 
@@ -32,19 +32,19 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for regions capital city population information is sent to the organisation the report is being made for.
+A request for regions population information is sent to the organisation the report is being made for.
 
 ## MAIN SUCCESS SCENARIO
 
 1. Employee requests region population information for regions in the world.
-2. Employee requests the top N capital cities population information for the region.
-3. Employee extracts current capital city information of the region.
+2. Employee requests the city population information for the region.
+3. Employee extracts current city information of the region.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS
 
 3. **Invalid continent.**:
-    1. Employee is informed that the input of N is not valid.
+    1. Employee is informed that the request is not valid.
 
 ## SUB-VARIATIONS
 

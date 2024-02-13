@@ -1,4 +1,4 @@
-# USE CASE:  Report of all the cities in a country organised by largest population to smallest.
+# USE CASE: 9 Report of all the cities in a country organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 

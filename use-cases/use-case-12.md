@@ -1,4 +1,4 @@
-# USE CASE: 13 Report of all the top N populated cities in a continent, where N is provided by the user.
+# USE CASE: 12 Report of all the top N populated cities in a continent, where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
