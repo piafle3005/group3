@@ -5,6 +5,8 @@ actor e as "employee"
 
 rectangle Database
 
+' define the usecase
+
 rectangle "Information System"{
     usecase uc as "Send the request"
     usecase gi1 as "get the information"
@@ -13,6 +15,7 @@ rectangle "Information System"{
     usecase condition2 as "N provied by the User"
     usecase print as "Print Report/Data"
 
+' define the relationship between the usecases
     e - uc
 
     uc ..> gi1: include
