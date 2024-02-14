@@ -1,4 +1,4 @@
-# Code of conduct
+# Code of conduct 
 
 Be present, share your ideas and opinions
 
