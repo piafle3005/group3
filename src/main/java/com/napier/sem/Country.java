@@ -17,7 +17,7 @@ public class Country{
     //The population of a country
     public int population;
 
-    //The cpital city of a country
+    //The capital city of a country
     public String capital;
 
 }
