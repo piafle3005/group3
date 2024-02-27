@@ -8,6 +8,8 @@ public class City {
     //The country of the city
     public String country;
 
+    public String continent;
+
     //The district of the city
     public String district;
 
