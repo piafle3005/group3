@@ -331,6 +331,47 @@ public class App
         }
     }
 
+    //Usecase 6
+    public ArrayList<Country> getUseCase6(String region, int limit)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.region, country.population "
+                            + "FROM country "
+                            + "WHERE country.region = '" + region + "' "
+                            + "ORDER BY country.population DESC";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country = new ArrayList<Country>();
+            int count =0;
+            while (rset.next() && count < limit)
+            {
+                Country country6 = new Country();
+                country6.name = rset.getString("name");
+                country6.region = rset.getString("region");
+                country6.population = rset.getInt("population");
+                country.add(country6);
+                count++;
+            }
+            return country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the countries in a region organised by largest population to smallest");
+            return null;
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -341,22 +382,27 @@ public class App
 
         //print UseCase1
         ArrayList<Country> country = a.getUseCase1("Africa");
-        a.printUseCase1(country);
+        //a.printUseCase1(country);
 
         //print UseCase2
         ArrayList<Country> country2 = a.getUseCase2("Middle East");
-        a.printUseCase2(country2);
+        //a.printUseCase2(country2);
 
         //print UseCase3
         ArrayList<Country> country3 = a.getUseCase3(16);
-        a.printUseCase3(country3);
+        //a.printUseCase3(country3);
 
+        //print UseCase4
         ArrayList<Country> country4 = a.getUseCase4("Europe", 3);
-        a.printUseCase1(country4);
+        //a.printUseCase1(country4);
 
         //print UseCase5
         ArrayList<Country> country5 = a.getUseCase5();
-        a.printUseCase5(country5);
+        //a.printUseCase5(country5);
+
+        //print UseCase6
+        ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
+        a.printUseCase2(country6);
 
         // Disconnect from database
         a.disconnect();
