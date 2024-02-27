@@ -183,7 +183,6 @@ public class App
     }
 
     //Usecase3
-    //Usecase3
     public ArrayList<Country> getUseCase3(int limit)
     {
         try
@@ -222,6 +221,64 @@ public class App
         }
     }
 
+    public void printUseCase3(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No countries found.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-12s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (Country c1 : country) {
+            String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+                    c1.name, c1.population);
+            System.out.println(c1_string);
+        }
+    }
+
+    //Usecase 4
+    public ArrayList<Country> getUseCase4(String continent, int limit)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.continent, country.population "
+                            + "FROM country "
+                            + "WHERE country.continent = '" + continent + "' "
+                            + "ORDER BY country.population DESC"; //sort from the largest to the smallest
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country = new ArrayList<Country>();
+            int count = 0;
+            while (rset.next() && count < limit)
+            {
+                Country country1 = new Country();
+                country1.name = rset.getString("name");
+                country1.continent = rset.getString("continent");
+                country1.population = rset.getInt("population");
+                country.add(country1);
+                count++;
+            }
+            return country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest.");
+            return null;
+        }
+    }
+
+    //Usecase4 can take the same print methode from usecase1 because it is the same request
+
     //Usecase 5
     public ArrayList<Country> getUseCase5()
     {
@@ -259,21 +316,6 @@ public class App
         }
     }
 
-    public void printUseCase3(ArrayList<Country> country) {
-        if (country == null) {
-            System.out.println("No countries found.");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-20s %-12s", "Name", "Population"));
-        // Loop over all countries in the list
-        for (Country c1 : country) {
-            String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
-                    c1.name, c1.population);
-            System.out.println(c1_string);
-        }
-    }
-
     public void printUseCase5(ArrayList<Country> country) {
         if (country == null) {
             System.out.println("No countries found.");
@@ -308,6 +350,9 @@ public class App
         //print UseCase3
         ArrayList<Country> country3 = a.getUseCase3(16);
         a.printUseCase3(country3);
+
+        ArrayList<Country> country4 = a.getUseCase4("Europe", 3);
+        a.printUseCase1(country4);
 
         //print UseCase5
         ArrayList<Country> country5 = a.getUseCase5();
