@@ -212,6 +212,10 @@ public class App
 
     public void printUseCase1(ArrayList<Country> country)
     {
+        if (country == null) {
+            System.out.println("No countries found.");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-20s %-15s %-12s", "Name", "Continent", "Population"));
         // Loop over all countries in the list
@@ -223,6 +227,10 @@ public class App
     }
 
     public void printUseCase5(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No countries found.");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-20s %-12s", "Name", "Population"));
         // Loop over all countries in the list
