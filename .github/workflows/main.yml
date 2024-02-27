@@ -1,4 +1,5 @@
-name: A workflow for my Hello World App
+#in this file we integrate self-contained JAR with Maven
+name: A workflow for the population information
 on: push
 
 jobs:
