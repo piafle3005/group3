@@ -372,6 +372,58 @@ public class App
         }
     }
 
+    //Usecase7
+    public ArrayList<City> getUseCase7()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population "
+                            + "FROM city "
+                            + "ORDER BY city.population DESC";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<City> city = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city1 = new City();
+                city1.name = rset.getString("name");
+                city1.population = rset.getInt("population");
+                city.add(city1);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest");
+            return null;
+        }
+    }
+
+    public void printUseCase7(ArrayList<City> city) {
+        if (city == null) {
+            System.out.println("No cities found.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-12s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (City c1 : city) {
+            String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+                    c1.name, c1.population);
+            System.out.println(c1_string);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -402,7 +454,10 @@ public class App
 
         //print UseCase6
         ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
-        a.printUseCase2(country6);
+        //a.printUseCase2(country6);
+
+        ArrayList<City> city = a.getUseCase7();
+        a.printUseCase7(city);
 
         // Disconnect from database
         a.disconnect();
