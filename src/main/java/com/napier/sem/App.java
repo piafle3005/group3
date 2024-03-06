@@ -112,6 +112,70 @@ public class App
         }
     }
 
+    public ArrayList<City> getUseCase10()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                        "SELECT city.name, city.population"
+                                + "FROM district"
+                                + "ORDER BY city.population ASC";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city10 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city10.add(city);
+            }
+            return city10;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the cities in a district organised by largest population to smallest");
+            return null;
+        }
+    } // getUseCase10
+
+    public ArrayList<City> getUseCase11()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM world"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city11 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city11.add(city);
+            }
+            return city11;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in the world where N is provided by the user");
+            return null;
+        }
+    } // getUseCase11
+
     public ArrayList<Country> getUseCase5()
     {
         try
@@ -203,12 +267,17 @@ public class App
         ArrayList<Country> country5 = a.getUseCase5();
         a.printUseCase5(country5);
 
+        ArrayList<City> city10 = a.getUseCase10();
+        a.printUseCase10(city10);
 
+        ArrayList<City> city11 = a.getUseCase11();
+        a.printUseCase11(city11);
 
 
         // Disconnect from database
         a.disconnect();
     }
+
 
     public void printUseCase1(ArrayList<Country> country)
     {
@@ -240,5 +309,37 @@ public class App
             System.out.println(c1_string);
         }
     }
+    public void printUseCase10(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "District", "Population"));
+        // Loop over all cities in the list
+        for (City c10 : city)
+        {
+            String c10_string = String.format("%-20s %-15s %-12s", c10.name, c10.district, c10.population);
+            System.out.println(c10_string);
+        }
+    } // print use case 10
 
+    public void printUseCase11(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "N"));
+        // Loop over all cities in the list
+        for (City c11 : city)
+        {
+            String c11_string = String.format("%-20s %-15s %-12s", c11.name, c11.population, 'N');
+            System.out.println(c11_string);
+        }
+    } // print use case 11
 }
