@@ -484,7 +484,6 @@ public class App
         ArrayList<Capital> capital17 = a.getUseCase17();
         a.printUseCase17(capital17);
 
-
         // Disconnect from database
         a.disconnect();
     }
