@@ -346,8 +346,8 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT capital.name, capital.population"
-                            + "FROM country"
-                            + "LIMIT N";
+                            + "FROM continent"
+                            + "ORDER BY capital.population ASC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -363,7 +363,7 @@ public class App
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the top N capital cities in a country, where N is provided by the user");
+            System.out.println("Failed to get all the capital cities in a continent, organised by largest population to smallest");
             return null;
         }
     } //get use case 17
@@ -646,11 +646,11 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Country"));
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
         // Loop over all cities in the list
         for (Capital c17 : capital)
         {
-            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, "Country");
+            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, "Continent");
             System.out.println(c17_string);
         }
     } //Print use case 17
