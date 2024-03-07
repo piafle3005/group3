@@ -265,4 +265,51 @@ public class App
         }
     }
 
+    public ArrayList<City> getUseCase10()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM district"
+                            + "ORDER BY city.population ASC";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city10 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city10.add(city);
+            }
+            return city10;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the cities in a district organised by largest population to smallest");
+            return null;
+        }
+    } // getUseCase10
+    public void printUseCase10(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "District", "Population"));
+        // Loop over all cities in the list
+        for (City c10 : city)
+        {
+            String c10_string = String.format("%-20s %-15s %-12s", c10.name, c10.district, c10.population);
+            System.out.println(c10_string);
+        }
+    } // print use case 10
 }
