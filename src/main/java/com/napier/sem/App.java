@@ -385,6 +385,53 @@ public class App
             return null;
         }
     } //Get use case 16
+    public ArrayList<Capital> getUseCase17()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT capital.name, capital.population"
+                            + "FROM continent"
+                            + "ORDER BY capital.population ASC";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Capital> capital17 = new ArrayList<>();
+            while (rset.next())
+            {
+                Capital capital = new Capital();
+                capital.name = rset.getString("name");
+                capital.population = rset.getInt("population");
+                capital17.add(capital);
+            }
+            return capital17;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in a continent, organised by largest population to smallest");
+            return null;
+        }
+    } //get use case 17
+    public void printUseCase17(ArrayList<Capital> capital)
+    {
+        if (capital == null)
+        {
+            System.out.println("No capitals found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
+        // Loop over all cities in the list
+        for (Capital c17 : capital)
+        {
+            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, "Continent");
+            System.out.println(c17_string);
+        }
+    } //Print use case 17
 
     public void printUseCase16(ArrayList<Capital> capital)
     {
