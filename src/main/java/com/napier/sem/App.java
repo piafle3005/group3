@@ -161,6 +161,53 @@ public class App
             System.out.println(c10_string);
         }
     } // print use case 10
+    public ArrayList<City> getUseCase11()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM world"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city11 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city11.add(city);
+            }
+            return city11;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in the world, where N is provided by the user");
+            return null;
+        }
+    } // getUseCase11
+    public void printUseCase11(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "N"));
+        // Loop over all cities in the list
+        for (City c11 : city)
+        {
+            String c11_string = String.format("%-20s %-15s %-12s", c11.name, c11.population, 'N');
+            System.out.println(c11_string);
+        }
+    } // print use case 11
 
     public ArrayList<City> getUseCase12()
     {
