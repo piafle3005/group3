@@ -205,28 +205,28 @@ public class App
         ArrayList<Country> country5 = a.getUseCase5();
         a.printUseCase5(country5);
 
-        ArrayList<City> city10 = a.getUseCase10();
+        ArrayList<City> city10 = a.getUseCase10("Kabol");
         a.printUseCase10(city10);
 
-        ArrayList<City> city11 = a.getUseCase11();
+        ArrayList<City> city11 = a.getUseCase11(9);
         a.printUseCase11(city11);
 
-        ArrayList<City> city12 = a.getUseCase12();
+        ArrayList<City> city12 = a.getUseCase12(6, "Europe");
         a.printUseCase12(city12);
 
-        ArrayList<City> city13 = a.getUseCase13();
+        ArrayList<City> city13 = a.getUseCase13(7, "Middle East");
         a.printUseCase13(city13);
 
-        ArrayList<City> city14 = a.getUseCase14();
+        ArrayList<City> city14 = a.getUseCase14(8, "Scotland");
         a.printUseCase14(city14);
 
-        ArrayList<City> city15 = a.getUseCase15();
+        ArrayList<City> city15 = a.getUseCase15(3, "Kabol");
         a.printUseCase15(city15);
 
-        ArrayList<Capital> capital16 = a.getUseCase16();
+        ArrayList<Country> capital16 = a.getUseCase16();
         a.printUseCase16(capital16);
 
-        ArrayList<Capital> capital17 = a.getUseCase17();
+        ArrayList<Country> capital17 = a.getUseCase17("Europe");
         a.printUseCase17(capital17);
 
         // Disconnect from database
@@ -265,7 +265,7 @@ public class App
         }
     }
 
-    public ArrayList<City> getUseCase10()
+    public ArrayList<City> getUseCase10(String district)
     {
         try
         {
@@ -274,8 +274,9 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM district"
+                    "SELECT city.name, city.population "
+                            + "FROM city "
+                            + "WHERE city.district = '" + district + "' "
                             + "ORDER BY city.population ASC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -313,7 +314,7 @@ public class App
         }
     } // print use case 10
 
-    public ArrayList<City> getUseCase11()
+    public ArrayList<City> getUseCase11(int limit)
     {
         try
         {
@@ -322,19 +323,20 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM world"
-                            + "LIMIT N";
+                    "SELECT city.name, city.population "
+                            + "FROM city " ;
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> city11 = new ArrayList<>();
-            while (rset.next())
+            int count = 0;
+            while (rset.next() && count < limit)
             {
                 City city = new City();
                 city.name = rset.getString("name");
                 city.population = rset.getInt("population");
                 city11.add(city);
+                count++;
             }
             return city11;
         } catch (Exception e)
@@ -360,7 +362,7 @@ public class App
             System.out.println(c11_string);
         }
     } // print use case 11
-    public ArrayList<City> getUseCase12()
+    public ArrayList<City> getUseCase12(int limit, String continent)
     {
         try
         {
@@ -369,19 +371,23 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM continent"
-                            + "LIMIT N";
+                    "SELECT city.name, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.continent = '" + continent + "' ";
+
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> city12 = new ArrayList<>();
-            while (rset.next())
+            int count = 0;
+            while (rset.next() && count < limit)
             {
                 City city = new City();
                 city.name = rset.getString("name");
                 city.population = rset.getInt("population");
                 city12.add(city);
+                count ++;
             }
             return city12;
         } catch (Exception e)
@@ -408,7 +414,7 @@ public class App
         }
     } // print use case 12
 
-    public ArrayList<City> getUseCase13()
+    public ArrayList<City> getUseCase13(int limit, String region)
     {
         try
         {
@@ -417,19 +423,23 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM region"
-                            + "LIMIT N";
+                    "SELECT city.name, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.region = '" + region + "' ";
+
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> city13 = new ArrayList<>();
-            while (rset.next())
+            int count = 0;
+            while (rset.next() && count < limit)
             {
                 City city = new City();
                 city.name = rset.getString("name");
                 city.population = rset.getInt("population");
                 city13.add(city);
+                count ++;
             }
             return city13;
         } catch (Exception e)
@@ -457,7 +467,7 @@ public class App
         }
     } // Print use case 13
 
-    public ArrayList<City> getUseCase14 ()
+    public ArrayList<City> getUseCase14 (int limit, String country)
     {
         try
         {
@@ -466,19 +476,23 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM country"
-                            + "LIMIT N";
+                    "SELECT city.name, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.name = '" + country + "' ";
+
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> city14 = new ArrayList<>();
-            while (rset.next())
+            int count = 0;
+            while (rset.next() && count < limit)
             {
                 City city = new City();
                 city.name = rset.getString("name");
                 city.population = rset.getInt("population");
                 city14.add(city);
+                count ++;
             }
             return city14;
         } catch (Exception e)
@@ -505,7 +519,7 @@ public class App
         }
     } // print use case 14
 
-    public ArrayList<City> getUseCase15()
+    public ArrayList<City> getUseCase15(int limit, String district)
     {
         try
         {
@@ -514,19 +528,21 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.population"
-                            + "FROM district"
-                            + "LIMIT N";
+                    "SELECT city.name, city.population "
+                            + "FROM city "
+                            + "WHERE city.district ='" + district + "' ";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> city15 = new ArrayList<>();
-            while (rset.next())
+            int count = 0;
+            while (rset.next() && count < limit)
             {
                 City city = new City();
                 city.name = rset.getString("name");
                 city.population = rset.getInt("population");
                 city15.add(city);
+                count ++;
             }
             return city15;
         } catch (Exception e)
@@ -552,7 +568,7 @@ public class App
             System.out.println(c15_string);
         }
     } //Print use case 15
-    public ArrayList<Capital> getUseCase16()
+    public ArrayList<Country> getUseCase16()
     {
         try
         {
@@ -561,17 +577,18 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT capital.name, capital.population"
-                            + "FROM world"
-                            + "ORDER BY capital.population ASC";
+                    "SELECT country.capital, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "ORDER BY country.population ASC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            ArrayList<Capital> capital16 = new ArrayList<>();
+            ArrayList<Country> capital16 = new ArrayList<>();
             while (rset.next())
             {
-                Capital capital = new Capital();
-                capital.name = rset.getString("name");
+                Country capital = new Country();
+                capital.capital = rset.getString("Capital");
                 capital.population = rset.getInt("population");
                 capital16.add(capital);
             }
@@ -583,7 +600,7 @@ public class App
             return null;
         }
     } //Get use case 16
-    public ArrayList<Capital> getUseCase17()
+    public ArrayList<Country> getUseCase17(String continent)
     {
         try
         {
@@ -592,17 +609,20 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT capital.name, capital.population"
-                            + "FROM continent"
-                            + "ORDER BY capital.population ASC";
+                    "SELECT country.capital, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.continent = '" + continent + "' "
+                            + "ORDER BY city.population ASC";
+
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            ArrayList<Capital> capital17 = new ArrayList<>();
+            ArrayList<Country> capital17 = new ArrayList<>();
             while (rset.next())
             {
-                Capital capital = new Capital();
-                capital.name = rset.getString("name");
+                Country capital = new Country();
+                capital.capital = rset.getString("capital");
                 capital.population = rset.getInt("population");
                 capital17.add(capital);
             }
@@ -614,7 +634,7 @@ public class App
             return null;
         }
     } //get use case 17
-    public void printUseCase17(ArrayList<Capital> capital)
+    public void printUseCase17(ArrayList<Country> capital)
     {
         if (capital == null)
         {
@@ -624,14 +644,14 @@ public class App
         // Print header
         System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
         // Loop over all cities in the list
-        for (Capital c17 : capital)
+        for (Country c17 : capital)
         {
             String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, "Continent");
             System.out.println(c17_string);
         }
     } //Print use case 17
 
-    public void printUseCase16(ArrayList<Capital> capital)
+    public void printUseCase16(ArrayList<Country> capital)
     {
         if (capital == null)
         {
@@ -641,7 +661,7 @@ public class App
         // Print header
         System.out.println(String.format("%-20s %-15s", "Name", "Population"));
         // Loop over all cities in the list
-        for (Capital c16 : capital)
+        for (Country c16 : capital)
         {
             String c16_string = String.format("%-20s %-15s", c16.name, c16.population);
             System.out.println(c16_string);
