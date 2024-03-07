@@ -755,4 +755,22 @@ public class App
                     data.name, data.population, data.population_c, data.population_nc);
         }
     }
+
+    public void printUseCase23(ArrayList<Population> pop)
+    {
+        if (pop == null)
+        {
+            System.out.println("No data found. Or perhaps the world went empty.\n");
+            return;
+        }
+        System.out.println(String.format("%-30s %-15s %-22s %s",
+                "Region", "Total Population", "City Population", "Non-City Population"));
+        System.out.println("--------------------------------------------------------------------------------");
+        // loops through and prints each record's data from pop
+        for(Population data : pop)
+        {
+            System.out.printf("%-30s %-15d %-22d %d%n",
+                    data.name, data.population, data.population_c, data.population_nc);
+        }
+    }
 }
