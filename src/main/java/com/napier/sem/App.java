@@ -275,7 +275,7 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.name, city.population "
-                            + "FROM city "
+                            + "FROM city  "
                             + "WHERE city.district = '" + district + "' "
                             + "ORDER BY city.population ASC";
             // Execute the SQL Statement
