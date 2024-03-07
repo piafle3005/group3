@@ -442,6 +442,48 @@ public class App
         }
     }
 
+    public ArrayList<Population> getUseCase23()
+    {
+        ArrayList<Population> pop = new ArrayList<>();
+
+        try
+        {
+            // create SQL statement
+            Statement stmt = con.createStatement();
+
+            // SQL code to be run using stmt, which returns total population, pop. of cities and pop. of non-cities per region
+            String popQuery =
+                    "SELECT allpops.Country_Region, allpops.Country_Population, allpops.City_Population, " +
+                            "(allpops.Country_Population - allpops.City_Population) AS Non_City_Population" +
+                    "FROM (SELECT country.Region  AS Country_Region, country.Population AS Country_Population," +
+                                "SUM(city.population) AS City_Population)" +
+                            "FROM country.Region, country JOIN city ON country.Code == city.CountryCode" +
+                            "GROUP BY country.Region" +
+                            ") AS allpops" +
+                    "GROUP BY allpops.Region, allpops.Population";
+
+            // executes SQL statement when called
+            ResultSet popQueryResult = stmt.executeQuery(popQuery);
+
+            // loops through and adds each record's data to pop
+            while (popQueryResult.next())
+            {
+                Population data = new Population();
+                data.name = popQueryResult.getString("Country_Region");
+                data.population = popQueryResult.getInt("Country_Population");
+                data.population_c = popQueryResult.getInt("City_Population");
+                data.population_nc = popQueryResult.getInt("Non_City_Population");
+                pop.add(data);
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return pop;
+    }
+
     /*public Country getUseCase5()
     {
 
