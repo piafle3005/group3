@@ -312,4 +312,340 @@ public class App
             System.out.println(c10_string);
         }
     } // print use case 10
+
+    public ArrayList<City> getUseCase11()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM world"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city11 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city11.add(city);
+            }
+            return city11;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in the world, where N is provided by the user");
+            return null;
+        }
+    } // getUseCase11
+    public void printUseCase11(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "N"));
+        // Loop over all cities in the list
+        for (City c11 : city)
+        {
+            String c11_string = String.format("%-20s %-15s %-12s", c11.name, c11.population, 'N');
+            System.out.println(c11_string);
+        }
+    } // print use case 11
+    public ArrayList<City> getUseCase12()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM continent"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city12 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city12.add(city);
+            }
+            return city12;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in a continent, where N is provided by the user");
+            return null;
+        }
+    } // Get use case 12
+    public void printUseCase12(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
+        // Loop over all cities in the list
+        for (City c12 : city)
+        {
+            String c12_string = String.format("%-20s %-15s %-12s", c12.name, c12.population, "Continent");
+            System.out.println(c12_string);
+        }
+    } // print use case 12
+
+    public ArrayList<City> getUseCase13()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM region"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city13 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city13.add(city);
+            }
+            return city13;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in a region, where N is provided by the user");
+            return null;
+        }
+    } //Get use case 13
+
+    public void printUseCase13(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Region"));
+        // Loop over all cities in the list
+        for (City c13 : city)
+        {
+            String c13_string = String.format("%-20s %-15s %-12s", c13.name, c13.population, "Region");
+            System.out.println(c13_string);
+        }
+    } // Print use case 13
+
+    public ArrayList<City> getUseCase14 ()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM country"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city14 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city14.add(city);
+            }
+            return city14;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in a country, where N is provided by the user");
+            return null;
+        }
+    } // Get use case 14
+    public void printUseCase14(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Country"));
+        // Loop over all cities in the list
+        for (City c14 : city)
+        {
+            String c14_string = String.format("%-20s %-15s %-12s", c14.name, c14.population, "Country");
+            System.out.println(c14_string);
+        }
+    } // print use case 14
+
+    public ArrayList<City> getUseCase15()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population"
+                            + "FROM district"
+                            + "LIMIT N";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> city15 = new ArrayList<>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.name = rset.getString("name");
+                city.population = rset.getInt("population");
+                city15.add(city);
+            }
+            return city15;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the top N populated cities in a district, where N is provided by the user");
+            return null;
+        }
+    } // Get use case15
+    public void printUseCase15(ArrayList<City> city)
+    {
+        if (city == null)
+        {
+            System.out.println("No cities found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "District"));
+        // Loop over all cities in the list
+        for (City c15 : city)
+        {
+            String c15_string = String.format("%-20s %-15s %-12s", c15.name, c15.population, "District");
+            System.out.println(c15_string);
+        }
+    } //Print use case 15
+    public ArrayList<Capital> getUseCase16()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT capital.name, capital.population"
+                            + "FROM world"
+                            + "ORDER BY capital.population ASC";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Capital> capital16 = new ArrayList<>();
+            while (rset.next())
+            {
+                Capital capital = new Capital();
+                capital.name = rset.getString("name");
+                capital.population = rset.getInt("population");
+                capital16.add(capital);
+            }
+            return capital16;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in the world, organised by largest population to smallest");
+            return null;
+        }
+    } //Get use case 16
+    public ArrayList<Capital> getUseCase17()
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT capital.name, capital.population"
+                            + "FROM continent"
+                            + "ORDER BY capital.population ASC";
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Capital> capital17 = new ArrayList<>();
+            while (rset.next())
+            {
+                Capital capital = new Capital();
+                capital.name = rset.getString("name");
+                capital.population = rset.getInt("population");
+                capital17.add(capital);
+            }
+            return capital17;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in a continent, organised by largest population to smallest");
+            return null;
+        }
+    } //get use case 17
+    public void printUseCase17(ArrayList<Capital> capital)
+    {
+        if (capital == null)
+        {
+            System.out.println("No capitals found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
+        // Loop over all cities in the list
+        for (Capital c17 : capital)
+        {
+            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, "Continent");
+            System.out.println(c17_string);
+        }
+    } //Print use case 17
+
+    public void printUseCase16(ArrayList<Capital> capital)
+    {
+        if (capital == null)
+        {
+            System.out.println("No capitals found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s", "Name", "Population"));
+        // Loop over all cities in the list
+        for (Capital c16 : capital)
+        {
+            String c16_string = String.format("%-20s %-15s", c16.name, c16.population);
+            System.out.println(c16_string);
+        }
+    } //Print use case 16
+
 }
