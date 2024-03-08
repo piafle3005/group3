@@ -489,30 +489,30 @@ public class App
 
         //print UseCase1
         ArrayList<Country> country = a.getUseCase1("Africa");
-        //a.printUseCase1(country);
+        a.printUseCase1(country);
 
         //print UseCase2
         ArrayList<Country> country2 = a.getUseCase2("Middle East");
-        //a.printUseCase2(country2);
+        a.printUseCase2(country2);
 
         //print UseCase3
         ArrayList<Country> country3 = a.getUseCase3(16);
-        //a.printUseCase3(country3);
+        a.printUseCase3(country3);
 
         //print UseCase4
         ArrayList<Country> country4 = a.getUseCase4("Europe", 3);
-        //a.printUseCase1(country4);
+        a.printUseCase1(country4);
 
         //print UseCase5
         ArrayList<Country> country5 = a.getUseCase5();
-        //a.printUseCase5(country5);
+        a.printUseCase5(country5);
 
         //print UseCase6
         ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
-        //a.printUseCase2(country6);
+        a.printUseCase2(country6);
 
         ArrayList<City> city = a.getUseCase7();
-        //a.printUseCase7(city);
+        a.printUseCase7(city);
 
         ArrayList<City> city2 = a.getUseCase8("Europe");
         a.printUseCase8(city2);
