@@ -566,6 +566,8 @@ public class App
         ArrayList<Population> population = a.getUseCase25();
         a.printUseCase25(population);
 
+        ArrayList<Population> population2 = a.getUseCase23();
+        a.printUseCase23(population2);
 
         // Disconnect from database
         a.disconnect();
