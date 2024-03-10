@@ -508,6 +508,62 @@ public class App
         }
     }
 
+    public ArrayList<Population> getUseCase25() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement to get total population of countries in each continent
+            String populationQuery =
+                    "SELECT country.continent, " +
+                            "SUM(country.population) AS total_population, " +
+                            "COALESCE(SUM(IF(city.population > 0, city.population, 0)), 0) AS total_population_c, " +
+                            "COALESCE(SUM(IF(city.population = 0, country.population, 0)), 0) AS total_population_nc " +
+                            "FROM country " +
+                            "LEFT JOIN city ON country.capital = city.name " +
+                            "GROUP BY country.continent";
+
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(populationQuery);
+            ArrayList<Population> population = new ArrayList<>();
+
+            // Get total population for each continent
+            while (rset.next()) {
+                Population data = new Population();
+                data.name = rset.getString("continent");
+                data.population = rset.getLong("total_population");
+                data.population_c = rset.getLong("total_population_c");
+                data.population_nc = rset.getLong("total_population_nc");
+                population.add(data);
+            }
+            return population;
+        } catch (SQLException e)
+        {
+            System.out.println("Error: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public void printUseCase25(ArrayList<Population> population) {
+        if (population == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+
+        // Print header
+        System.out.println(String.format("%-30s %-15s %-22s %s",
+                "Continent/Region/Country", "Population", "Population in Cities", "Population not in Cities"));
+        System.out.println("--------------------------------------------------------------------------------");
+
+        // Loop over all population data in the list
+        for (Population data : population) {
+            System.out.printf("%-30s %-15d %-22d %d%n",
+                    data.name, data.population, data.population_c, data.population_nc);
+        }
+    }
+
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -516,37 +572,10 @@ public class App
         // Connect to database
         a.connect();
 
-        //print UseCase1
-        ArrayList<Country> country = a.getUseCase1("Africa");
-        a.printUseCase1(country);
 
-        //print UseCase2
-        ArrayList<Country> country2 = a.getUseCase2("Middle East");
-        a.printUseCase2(country2);
 
-        //print UseCase3
-        ArrayList<Country> country3 = a.getUseCase3(16);
-        a.printUseCase3(country3);
-
-        //print UseCase4
-        ArrayList<Country> country4 = a.getUseCase4("Europe", 3);
-        a.printUseCase1(country4);
-
-        //print UseCase5
-        ArrayList<Country> country5 = a.getUseCase5();
-        a.printUseCase5(country5);
-
-        //print UseCase6
-        ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
-        a.printUseCase2(country6);
-
-        //print UseCase7
-        ArrayList<City> city = a.getUseCase7();
-        a.printUseCase7(city);
-
-        //print UseCase8
-        ArrayList<City> city2 = a.getUseCase8("Europe");
-        a.printUseCase8(city2);
+        ArrayList<Population> p1 = a.getUseCase25();
+        a.printUseCase25(p1);
 
         // Disconnect from database
         a.disconnect();
