@@ -369,8 +369,6 @@ public class App
     } //get use case 17
 
     public ArrayList<Population> getUseCase25() {
-        ArrayList<Population> population = new ArrayList<>();
-
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -386,23 +384,24 @@ public class App
                             "GROUP BY country.continent";
 
             // Execute SQL statement
-            ResultSet populationResult = stmt.executeQuery(populationQuery);
+            ResultSet rset = stmt.executeQuery(populationQuery);
+            ArrayList<Population> population = new ArrayList<>();
 
             // Get total population for each continent
-            while (populationResult.next()) {
+            while (rset.next()) {
                 Population data = new Population();
-                data.name = populationResult.getString("continent");
-                data.population = populationResult.getInt("total_population");
-                data.population_c = populationResult.getInt("total_population_c");
-                data.population_nc = populationResult.getInt("total_population_nc");
+                data.name = rset.getString("continent");
+                data.population = rset.getInt("total_population");
+                data.population_c = rset.getInt("total_population_c");
+                data.population_nc = rset.getInt("total_population_nc");
                 population.add(data);
             }
-
-        } catch (SQLException e) {
+            return population;
+        } catch (SQLException e)
+        {
             System.out.println("Error: " + e.getMessage());
+            return null;
         }
-
-        return population;
     }
 
 
