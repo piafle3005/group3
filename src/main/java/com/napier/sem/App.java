@@ -72,7 +72,9 @@ public class App
         }
     }
 
-    //Usecase 1
+    /**
+     * implement UseCase1
+     */
     public ArrayList<Country> getUseCase1(String continent)
     {
         try
@@ -121,6 +123,10 @@ public class App
         System.out.println(String.format("%-20s %-15s %-12s", "Name", "Continent", "Population"));
         // Loop over all countries in the list
         for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.continent, c1.population);
             System.out.println(c1_string);
@@ -166,6 +172,7 @@ public class App
         }
     }
 
+
     public void printUseCase2(ArrayList<Country> country)
     {
         if (country == null) {
@@ -176,6 +183,10 @@ public class App
         System.out.println(String.format("%-20s %-15s %-12s", "Name", "Region", "Population"));
         // Loop over all countries in the list
         for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.region, c1.population);
             System.out.println(c1_string);
@@ -216,7 +227,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest");
+            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
             return null;
         }
     }
@@ -230,6 +241,10 @@ public class App
         System.out.println(String.format("%-20s %-12s", "Name", "Population"));
         // Loop over all countries in the list
         for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.population);
             System.out.println(c1_string);
@@ -311,7 +326,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest");
+            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
             return null;
         }
     }
@@ -325,6 +340,10 @@ public class App
         System.out.println(String.format("%-20s %-12s", "Name", "Population"));
         // Loop over all countries in the list
         for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.population);
             System.out.println(c1_string);
@@ -372,6 +391,8 @@ public class App
         }
     }
 
+    //UseCase6 use the print method from useCase2
+
     //Usecase7
     public ArrayList<City> getUseCase7()
     {
@@ -404,7 +425,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest");
+            System.out.println("Failed to get all the cities in the world organised by largest population to smallest");
             return null;
         }
     }
@@ -418,6 +439,10 @@ public class App
         System.out.println(String.format("%-20s %-12s", "Name", "Population"));
         // Loop over all countries in the list
         for (City c1 : city) {
+            if (c1 == null) {
+                System.out.println("Null city found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.population);
             System.out.println(c1_string);
@@ -459,7 +484,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest");
+            System.out.println("Failed to get all the cities in a continent organised by largest population to smallest");
             return null;
         }
     }
@@ -473,6 +498,10 @@ public class App
         System.out.println(String.format("%-20s %-15s %-12s", "Name", "Continent", "Population"));
         // Loop over all countries in the list
         for (City c1 : city) {
+            if (c1 == null) {
+                System.out.println("Null city found.");
+                continue;
+            }
             String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
                     c1.name, c1.continent, c1.population);
             System.out.println(c1_string);
@@ -511,9 +540,11 @@ public class App
         ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
         a.printUseCase2(country6);
 
+        //print UseCase7
         ArrayList<City> city = a.getUseCase7();
         a.printUseCase7(city);
 
+        //print UseCase8
         ArrayList<City> city2 = a.getUseCase8("Europe");
         a.printUseCase8(city2);
 
