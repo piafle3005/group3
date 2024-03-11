@@ -13,6 +13,8 @@ public class City {
     //The district of the city
     public String district;
 
+    public String region;
+
     //The population of a city
     public int population;
 
