@@ -1260,7 +1260,113 @@ public class App
         }
     } //Print use case 22
 
+    public ArrayList<Population> getUseCase23() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
 
+            // Create string for SQL statement to get total population of countries in each region
+            String strSelect =
+                    "SELECT country.region, SUM(country.population) AS total_population, SUM(country.population) - SUM(city.population) AS total_population_nc, SUM(city.population) AS total_population_c "
+                    + "FROM country, city "
+                    + "WHERE city.countryCode = country.code "
+                    + "GROUP BY country.region";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            ArrayList<Population> population = new ArrayList<>();
+
+            // Get total population for each region
+            while (rset.next()) {
+                Population data = new Population();
+                data.region = rset.getString("region");
+                data.population = rset.getLong("total_population");
+                data.population_nc = rset.getLong("total_population_nc");
+                data.population_c = rset.getLong("total_population_c");
+                population.add(data);
+            }
+            return population;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get ...");
+            return null;
+        }
+    }
+
+    public void printUseCase23(ArrayList<Population> population) {
+        if (population == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+
+        // Print header
+        System.out.println(String.format("%-30s %-15s %-22s %s",
+                "Region", "Population", "Population in Cities",
+                "Population not in Cities"));
+        System.out.println("--------------------------------------------------------------------------------");
+
+        // Loop over all population data in the list
+        for (Population data : population) {
+            System.out.printf("%-30s %-15d %-22d %d%n",
+                    data.region, data.population, data.population_nc,
+                    data.population_c);
+        }
+    }
+
+    public ArrayList<Population> getUseCase24() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement to get total population of countries in each continent
+            String strSelect =
+                    "SELECT country.name, SUM(country.population) AS total_population, SUM(country.population) - SUM(city.population) AS total_population_nc, SUM(city.population) AS total_population_c "
+                            + "FROM country, city "
+                            + "WHERE city.countryCode = country.code "
+                            + "GROUP BY country.name";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            ArrayList<Population> population = new ArrayList<>();
+
+            // Get total population for each continent
+            while (rset.next()) {
+                Population data = new Population();
+                data.name = rset.getString("name");
+                data.population = rset.getLong("total_population");
+                data.population_nc = rset.getLong("total_population_nc");
+                data.population_c = rset.getLong("total_population_c");
+                population.add(data);
+            }
+            return population;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get ...");
+            return null;
+        }
+    }
+
+    public void printUseCase24(ArrayList<Population> population) {
+        if (population == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+
+        // Print header
+        System.out.println(String.format("%-30s %-15s %-22s %s",
+                "Country", "Population", "Population in Cities", "Population not in Cities"));
+        System.out.println("--------------------------------------------------------------------------------");
+
+        // Loop over all population data in the list
+        for (Population data : population) {
+            System.out.printf("%-30s %-15d %-22d %d%n",
+                    data.name, data.population, data.population_nc, data.population_c);
+        }
+    }
 
 
     public ArrayList<Population> getUseCase25() {
@@ -1306,7 +1412,7 @@ public class App
 
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s",
-                "Continent/Region/Country", "Population", "Population in Cities", "Population not in Cities"));
+                "Continent", "Population", "Population in Cities", "Population not in Cities"));
         System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
@@ -1315,6 +1421,63 @@ public class App
                     data.continent, data.population, data.population_nc, data.population_c);
         }
     }
+
+    //Usecase26
+    public ArrayList<Country> getUseCase26()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) AS total_population "
+                            + "FROM country ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country26 = new ArrayList<Country>();
+
+            while (rset.next())
+            {
+                Country c26 = new Country();
+                c26.name = rset.getString("total_population");
+                country26.add(c26);
+
+            }
+            return country26;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
+            return null;
+        }
+    }
+
+    public void printUseCase26(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No countries found.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s ", "Population of the world"));
+                // Loop over all countries in the list
+        for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
+            String c1_string = String.format("%-20s", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+                    c1.name);
+            System.out.println(c1_string);
+        }
+    }
+
 
     public static void main(String[] args)
     {
@@ -1408,12 +1571,25 @@ public class App
         ArrayList<Country> capital21 = a.getUseCase21(3, "Europe");
         a.printUseCase21(capital21);
 
+        //print UseCase22
+        ArrayList<Country> capital22 = a.getUseCase22(3, "Western Europe");
+        a.printUseCase22(capital22);
+
+        //print UseCase23
+        ArrayList<Population> p23 = a.getUseCase23();
+        a.printUseCase23(p23);
+
+        //print UseCase24
+        ArrayList<Population> p24 = a.getUseCase24();
+        a.printUseCase24(p24);
+
         //print UseCase25
         ArrayList<Population> p1 = a.getUseCase25();
         a.printUseCase25(p1);
 
-        ArrayList<Country> capital22 = a.getUseCase22(3, "Western Europe");
-        a.printUseCase22(capital22);
+        //print UseCase26
+        ArrayList<Country> p26 = a.getUseCase26();
+        a.printUseCase26(p26);
 
 
         // Disconnect from database

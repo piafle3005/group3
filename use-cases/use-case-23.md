@@ -1,4 +1,4 @@
-# USE CASE: 23 Report of the total population, population in cities, population not in cities, for all countries.
+# USE CASE: 23 Report of the total population, population in cities, population not in cities, for all region.
 
 ## CHARACTERISTIC INFORMATION
 

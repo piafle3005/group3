@@ -15,4 +15,6 @@ public class Population {
     public long population_nc;
 
     public String continent;
+
+    public String region;
 }
