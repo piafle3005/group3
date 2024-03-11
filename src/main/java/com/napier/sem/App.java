@@ -1478,6 +1478,42 @@ public class App
         }
     }
 
+    //Usecase27
+    public long getContinentPopulation(String continent) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) AS total_population " +
+                            "FROM country " +
+                            "WHERE country.continent = '" + continent + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Check if a result is returned
+            if (rset.next()) {
+                return rset.getLong("total_population");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of " + continent);
+        }
+        return -1; // Return -1 if population retrieval fails
+    }
+
+    // Method to print the population of a specific continent
+    public void printContinentPopulation(String continent, long continentPopulation) {
+        if (continentPopulation == -1) {
+            System.out.println("Failed to retrieve the population of " + continent);
+        } else {
+            System.out.println("Population of " + continent + ": " + continentPopulation);
+        }
+    }
+
+
 
     public static void main(String[] args)
     {
