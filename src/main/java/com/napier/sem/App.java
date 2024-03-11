@@ -1548,6 +1548,41 @@ public class App
         }
     }
 
+    //UseCase29
+    public long getUseCase29(String district) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(population) AS total_population " +
+                            "FROM city " +
+                            "WHERE district = '" + district + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Check if a result is returned
+            if (rset.next()) {
+                return rset.getLong("total_population");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of district " + district);
+        }
+        return -1; // Getting population data has failed
+    }
+
+    // Print district population data
+    public void printUseCase29(String district, long districtPop) {
+        if (districtPop == -1) {
+            System.out.println("Failed to retrieve the population of " + district);
+        } else {
+            System.out.println("Population of " + district + ": " + districtPop);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
