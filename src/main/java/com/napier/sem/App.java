@@ -1618,6 +1618,39 @@ public class App
         }
     }
 
+    //UseCase31
+    public long getUseCase31(String city) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT population FROM city WHERE name = '" + city + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Check if a result is returned
+            if (rset.next()) {
+                return rset.getLong("population");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of city " + city);
+        }
+        return -1; // Getting population data has failed
+    }
+
+    // Method to print the population of a city
+    public void printCityPopulation(String cityName, long cityPopulation) {
+        if (cityPopulation == -1) {
+            System.out.println("Failed to retrieve the population of " + cityName);
+        } else {
+            System.out.println("Population of " + cityName + ": " + cityPopulation);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
