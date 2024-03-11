@@ -1479,7 +1479,7 @@ public class App
     }
 
     //Usecase27
-    public long getContinentPopulation(String continent) {
+    public long getUseCase27(String continent) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1501,11 +1501,11 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get the population of " + continent);
         }
-        return -1; // Return -1 if population retrieval fails
+        return -1; // Return -1 if data cannot be retrieved
     }
 
     // Method to print the population of a specific continent
-    public void printContinentPopulation(String continent, long continentPopulation) {
+    public void printUseCase27(String continent, long continentPopulation) {
         if (continentPopulation == -1) {
             System.out.println("Failed to retrieve the population of " + continent);
         } else {
