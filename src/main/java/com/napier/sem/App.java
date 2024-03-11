@@ -1513,7 +1513,40 @@ public class App
         }
     }
 
+    //Usecase28
+    public long getUseCase28(String region) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
 
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(population) AS total_population " +
+                            "FROM country " +
+                            "WHERE region = '" + region + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Check if a result is returned
+            if (rset.next()) {
+                return rset.getLong("total_population");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of " + region);
+        }
+        return -1; // Getting population data has failed
+    }
+
+    // Print region population data
+    public void printUseCase28(String region, long regionPop) {
+        if (regionPop == -1) {
+            System.out.println("Failed to retrieve the population of " + region);
+        } else {
+            System.out.println("Population of " + region + ": " + regionPop);
+        }
+    }
 
     public static void main(String[] args)
     {
