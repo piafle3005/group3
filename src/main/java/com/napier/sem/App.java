@@ -1583,6 +1583,41 @@ public class App
         }
     }
 
+    //UseCase30
+    public long getUseCase30(String country) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT population " +
+                            "FROM country " +
+                            "WHERE name = '" + country + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Check if a result is returned
+            if (rset.next()) {
+                return rset.getLong("population");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of country " + country);
+        }
+        return -1; // Getting population data has failed
+    }
+
+    // Method to print the population data of a given country
+    public void printUseCase30(String country, long population) {
+        if (population == -1) {
+            System.out.println("Failed to retrieve the population of " + country);
+        } else {
+            System.out.println("Population of " + country + ": " + population);
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
