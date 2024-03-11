@@ -934,15 +934,14 @@ public class App
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement to get total population of countries in each continent
-            String populationQuery =
-
+            String strSelect =
                     "SELECT country.continent, SUM(country.population) AS total_population, SUM(country.population) - SUM(city.population) AS total_population_nc, SUM(city.population) AS total_population_c "
                     + "FROM country, city "
                     + "WHERE city.countryCode = country.code "
                     + "GROUP BY country.continent";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(populationQuery);
+            ResultSet rset = stmt.executeQuery(strSelect);
             ArrayList<Population> population = new ArrayList<>();
 
             // Get total population for each continent
@@ -955,9 +954,11 @@ public class App
                 population.add(data);
             }
             return population;
-        } catch (SQLException e)
+        }
+        catch (SQLException e)
         {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get ...");
             return null;
         }
     }
