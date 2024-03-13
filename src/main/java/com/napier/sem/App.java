@@ -1314,7 +1314,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Region"));
         // Loop over all cities in the list
         for (Country c22 : capital)
         {
@@ -1368,7 +1368,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-15s %-22s %s", "Region", "Population", "Population in Cities", "Population not in Cities"));
+        System.out.println(String.format("%-30s %-15s %-22s %s", "Region", "Population",  "Population not in Cities", "Population in Cities"));
         System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
@@ -1425,7 +1425,7 @@ public class App
 
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s",
-                "Country", "Population", "Population in Cities", "Population not in Cities"));
+                "Country", "Population",  "Population not in Cities", "Population in Cities"));
         System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
@@ -1482,7 +1482,7 @@ public class App
 
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s",
-                "Continent", "Population", "Population in Cities", "Population not in Cities"));
+                "Continent", "Population", "Population not in Cities", "Population in Cities"));
         System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
