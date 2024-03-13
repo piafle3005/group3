@@ -240,6 +240,32 @@ public class AppTest {
         app.printUseCase8(cities);
     }
 
+    /**
+     * Test UseCase28
+     */
+
+    @Test
+    void getUseCase28TestValidData() {
+        long regionPopulation = app.getUseCase28("Western Europe");
+        assertNotEquals(-1, regionPopulation);
+    }
+
+    @Test
+    void getUseCase28TestInvalidData() {
+        long regionPopulation = app.getUseCase28("");
+        assertEquals(-1, regionPopulation);
+    }
+
+    @Test
+    void printUseCase28TestValidData() {
+        app.printUseCase28("Western Europe", 187500000);
+    }
+
+    @Test
+    void printUseCase28TestInvalidData() {
+        app.printUseCase28("", -1);
+    }
+
 }
 
 
