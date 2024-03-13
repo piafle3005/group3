@@ -679,6 +679,7 @@ public class App
         }
     } // print use case 11
 
+    //UseCase12
     public ArrayList<City> getUseCase12(int limit, String continent)
     {
         try
