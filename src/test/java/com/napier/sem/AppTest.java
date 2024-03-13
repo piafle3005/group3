@@ -240,6 +240,42 @@ public class AppTest {
         app.printUseCase8(cities);
     }
 
+    /**
+     * Test UseCase26
+     */
+
+    @Test
+    void printUseCase26TestNull()
+    {
+        app.printUseCase26(null);
+    }
+
+    @Test
+    void printUseCase26TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase26(countries);
+    }
+
+    @Test
+    void printUseCase26TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase26(countries);
+    }
+
+    @Test
+    void printUseCase26TestValidData()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.name = "China";
+        c1.continent = "Asia";
+        c1.population = 1412000000;
+        countries.add(c1);
+        app.printUseCase26(countries);
+    }
 }
 
 
