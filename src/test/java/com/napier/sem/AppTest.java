@@ -12,8 +12,7 @@ public class AppTest {
     static App app;
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         app = new App();
     }
 
@@ -21,34 +20,30 @@ public class AppTest {
      * Tests UseCase1
      */
     @Test
-    void printUseCase1TestNull()
-    {
+    void printUseCase1TestNull() {
         app.printUseCase1(null);
     }
 
     @Test
-    void printUseCase1TestEmpty()
-    {
+    void printUseCase1TestEmpty() {
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase1(countries);
     }
 
     @Test
-    void printUseCase1TestContainsNull()
-    {
+    void printUseCase1TestContainsNull() {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase1(countries);
     }
 
     @Test
-    void printUseCase1TestValidData()
-    {
+    void printUseCase1TestValidData() {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name= "Germany";
+        c1.name = "Germany";
         c1.continent = "Europe";
-        c1.population= 83200000;
+        c1.population = 83200000;
         countries.add(c1);
         app.printUseCase1(countries);
     }
@@ -57,34 +52,30 @@ public class AppTest {
      * Tests UseCase2
      */
     @Test
-    void printUseCase2TestNull()
-    {
+    void printUseCase2TestNull() {
         app.printUseCase2(null);
     }
 
     @Test
-    void printUseCase2TestEmpty()
-    {
+    void printUseCase2TestEmpty() {
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase2(countries);
     }
 
     @Test
-    void printUseCase2TestContainsNull()
-    {
+    void printUseCase2TestContainsNull() {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase2(countries);
     }
 
     @Test
-    void printUseCase2TestValidData()
-    {
+    void printUseCase2TestValidData() {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name= "Germany";
+        c1.name = "Germany";
         c1.region = "Western Europe";
-        c1.population= 82164700;
+        c1.population = 82164700;
         countries.add(c1);
         app.printUseCase2(countries);
     }
@@ -93,32 +84,28 @@ public class AppTest {
      * Tests UseCase3
      */
     @Test
-    void printUseCase3TestNull()
-    {
+    void printUseCase3TestNull() {
         app.printUseCase3(null);
     }
 
     @Test
-    void printUseCase3TestEmpty()
-    {
+    void printUseCase3TestEmpty() {
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase3(countries);
     }
 
     @Test
-    void printUseCase3TestContainsNull()
-    {
+    void printUseCase3TestContainsNull() {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase3(countries);
     }
 
     @Test
-    void printUseCase3TestValidData()
-    {
+    void printUseCase3TestValidData() {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name= "Germany";
+        c1.name = "Germany";
         c1.population = 82164700;
         countries.add(c1);
         app.printUseCase3(countries);
@@ -132,33 +119,29 @@ public class AppTest {
      * Tests UseCase5
      */
     @Test
-    void printUseCase5TestNull()
-    {
+    void printUseCase5TestNull() {
         app.printUseCase5(null);
     }
 
     @Test
-    void printUseCase5TestEmpty()
-    {
+    void printUseCase5TestEmpty() {
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase5(countries);
     }
 
     @Test
-    void printUseCase5TestContainsNull()
-    {
+    void printUseCase5TestContainsNull() {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase5(countries);
     }
 
     @Test
-    void printUseCase5TestValidData()
-    {
+    void printUseCase5TestValidData() {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name= "Germany";
-        c1.population= 83200000;
+        c1.name = "Germany";
+        c1.population = 83200000;
         countries.add(c1);
         app.printUseCase5(countries);
     }
@@ -172,33 +155,29 @@ public class AppTest {
      */
 
     @Test
-    void printUseCase7TestNull()
-    {
+    void printUseCase7TestNull() {
         app.printUseCase7(null);
     }
 
     @Test
-    void printUseCase7TestEmpty()
-    {
+    void printUseCase7TestEmpty() {
         ArrayList<City> cities = new ArrayList<City>();
         app.printUseCase7(cities);
     }
 
     @Test
-    void printUseCase7TestContainsNull()
-    {
+    void printUseCase7TestContainsNull() {
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printUseCase7(cities);
     }
 
     @Test
-    void printUseCase7TestValidData()
-    {
+    void printUseCase7TestValidData() {
         ArrayList<City> cities = new ArrayList<City>();
         City c1 = new City();
-        c1.name= "Edinburgh";
-        c1.population= 450180;
+        c1.name = "Edinburgh";
+        c1.population = 450180;
         cities.add(c1);
         app.printUseCase7(cities);
     }
@@ -208,39 +187,57 @@ public class AppTest {
      */
 
     @Test
-    void printUseCase8TestNull()
-    {
+    void printUseCase8TestNull() {
         app.printUseCase8(null);
     }
 
     @Test
-    void printUseCase8TestEmpty()
-    {
+    void printUseCase8TestEmpty() {
         ArrayList<City> cities = new ArrayList<City>();
         app.printUseCase8(cities);
     }
 
     @Test
-    void printUseCase8TestContainsNull()
-    {
+    void printUseCase8TestContainsNull() {
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printUseCase8(cities);
     }
 
     @Test
-    void printUseCase8TestValidData()
-    {
+    void printUseCase8TestValidData() {
         ArrayList<City> cities = new ArrayList<City>();
         City c1 = new City();
-        c1.name= "Munich";
-        c1.continent= "Europe";
-        c1.population= 1194560;
+        c1.name = "Munich";
+        c1.continent = "Europe";
+        c1.population = 1194560;
         cities.add(c1);
         app.printUseCase8(cities);
     }
 
+    /**
+     * Test UseCase31
+     */
+
+    @Test
+    void getUseCase31TestValidData() {
+        long cityPopulation = app.getUseCase31("Berlin");
+        assertNotEquals(-1, cityPopulation);
+    }
+
+    @Test
+    void getUseCase31TestInvalidData() {
+        long cityPopulation = app.getUseCase31("InvalidCity");
+        assertEquals(-1, cityPopulation);
+    }
+
+    @Test
+    void printCityPopulationTestValidData() {
+        app.printCityPopulation("Berlin", 3600000);
+    }
+
+    @Test
+    void printCityPopulationTestInvalidData() {
+        app.printCityPopulation("InvalidCity", -1);
+    }
 }
-
-
-
