@@ -240,7 +240,30 @@ public class AppTest {
         app.printUseCase8(cities);
     }
 
+    /**
+     * Test UseCase29
+     */
+
+    @Test
+    void getUseCase29TestValidData() {
+        long districtPopulation = app.getUseCase29("Central");
+        assertNotEquals(-1, districtPopulation);
+    }
+
+    @Test
+    void getUseCase29TestInvalidData() {
+        long districtPopulation = app.getUseCase29("This is not a district");
+        assertEquals(-1, districtPopulation);
+    }
+
+    @Test
+    void printUseCase29TestValidData() {
+        app.printUseCase29("Central", 100000);
+    }
+
+    @Test
+    void printUseCase29TestInvalidData() {
+        app.printUseCase29("This is not a district", -1);
+    }
+
 }
-
-
-
