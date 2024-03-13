@@ -240,6 +240,42 @@ public class AppTest {
         app.printUseCase8(cities);
     }
 
+    /**
+     * Test UseCase9
+     */
+
+    @Test
+    void printUseCase9TestNull()
+    {
+        app.printUseCase9(null);
+    }
+
+    @Test
+    void printUseCase9TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase9(cities);
+    }
+
+    @Test
+    void printUseCase9TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase9(cities);
+    }
+
+    @Test
+    void printUseCase9TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c1 = new City();
+
+
+        cities.add(c1);
+        app.printUseCase9(cities);
+    }
+
 }
 
 
