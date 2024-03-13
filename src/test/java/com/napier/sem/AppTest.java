@@ -240,7 +240,29 @@ public class AppTest {
         app.printUseCase8(cities);
     }
 
+/**
+ * Test UseCase30
+ */
+
+@Test
+void getUseCase30TestValidData() {
+    long countryPopulation = app.getUseCase30("Germany");
+    assertNotEquals(-1, countryPopulation);
 }
 
+@Test
+void getUseCase30TestInvalidData() {
+    long countryPopulation = app.getUseCase30("Random country");
+    assertEquals(-1, countryPopulation);
+}
 
+@Test
+void printUseCase30TestValidData() {
+    app.printUseCase30("France", 64756584);
+}
 
+@Test
+void printUseCase30TestInvalidData() {
+    app.printUseCase30("Random country", -1);
+    }
+}
