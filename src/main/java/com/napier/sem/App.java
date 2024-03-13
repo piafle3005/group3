@@ -1381,6 +1381,7 @@ public class App
         }
     }
 
+    //UseCase24
     public ArrayList<Population> getUseCase24() {
         try {
             // Create an SQL statement
