@@ -1495,7 +1495,7 @@ public class App
         }
     }
 
-    //Usecase26
+    //useCase26
     public ArrayList<Country> getUseCase26()
     {
         try
