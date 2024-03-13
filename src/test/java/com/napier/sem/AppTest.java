@@ -319,6 +319,7 @@ public class AppTest {
         City c1 = new City();
         c1.name= "Glasgow";
         c1.population= 1708147;
+        c1.country= "United Kingdom";
         capital.add(c1);
         app.printUseCase17(capital);
     }
