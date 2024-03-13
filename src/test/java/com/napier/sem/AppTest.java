@@ -276,6 +276,53 @@ public class AppTest {
         app.printUseCase9(cities);
     }
 
+    /**
+     * Tests UseCase22
+     */
+    @Test
+    void printUseCase22TestNull()
+    {
+        /**
+         *Test what happens if the given data is null
+         */
+        app.printUseCase22(null);
+    }
+
+    @Test
+    void printUseCase22TestEmpty()
+    {
+        /**
+         *Test what happens if the given data is empty
+         */
+        ArrayList<Country> capital = new ArrayList<Country>();
+        app.printUseCase22(capital);
+    }
+
+    @Test
+    void printUseCase22TestContainsNull()
+    {
+        /**
+         *Test what happens if the given data contains null
+         */
+        ArrayList<Country> capital = new ArrayList<Country>();
+        capital.add(null);
+        app.printUseCase22(capital);
+    }
+
+    @Test
+    void printUseCase22TestValidData()
+    {
+        /**
+         *Test what happens under normal condition
+         */
+        ArrayList<Country> capital = new ArrayList<Country>();
+        Country c22 = new Country();
+        c22.name= "Edinburgh";
+        c22.population= 558676;
+        c22.continent = "Europe";
+        capital.add(c22);
+        app.printUseCase22(capital);
+    }
 }
 
 
