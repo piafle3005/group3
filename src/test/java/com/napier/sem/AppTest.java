@@ -317,9 +317,9 @@ public class AppTest {
          */
         ArrayList<Country> capital = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name= "Glasgow";
-        c1.population= 1755170;
-        c1.region="West Central Lowlands";
+        c1.name= "Edinburgh";
+        c1.population= 558676;
+        c1.region="Lothian";
         capital.add(c1);
         app.printUseCase18(capital);
     }
