@@ -277,7 +277,7 @@ public class AppTest {
     }
 
     /**
-     * Tests UseCase1
+     * Tests UseCase18
      */
     @Test
     void printUseCase18TestNull()
