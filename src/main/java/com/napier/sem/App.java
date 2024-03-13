@@ -1029,6 +1029,7 @@ public class App
         }
     } //Print use case 17
 
+    //useCase18
     public ArrayList<Country> getUseCase18(String region)
     {
         try
