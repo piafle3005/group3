@@ -281,11 +281,262 @@ public class AppTest {
     void printUseCase9TestValidData()
     {
         ArrayList<City> cities = new ArrayList<City>();
-        City c1 = new City();
-
-
-        cities.add(c1);
+        City c9 = new City();
+        c9.name = "Munich";
+        c9.population = 1194560;
+        c9.country = "Germany";
+        cities.add(c9);
         app.printUseCase9(cities);
+    }
+
+    /**
+     * Test UseCase10
+     */
+    @Test
+    void printUseCase10TestNull()
+    {
+        app.printUseCase10(null);
+    }
+
+    @Test
+    void printUseCase10TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase10(cities);
+    }
+
+    @Test
+    void printUseCase10TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase10(cities);
+    }
+
+    @Test
+    void printUseCase10TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c10 = new City();
+        c10.name = "Munich";
+        c10.district = "Baijeri";
+        c10.population = 1194560;
+        cities.add(c10);
+        app.printUseCase10(cities);
+    }
+
+    /**
+     * Test UseCase11
+     */
+    @Test
+    void printUseCase11TestNull()
+    {
+        app.printUseCase11(null);
+    }
+
+    @Test
+    void printUseCase11TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase11(cities);
+    }
+
+    @Test
+    void printUseCase11TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase11(cities);
+    }
+
+    @Test
+    void printUseCase11TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c11 = new City();
+        c11.name = "Munich";
+        c11.population = 1194560;
+        cities.add(c11);
+        app.printUseCase11(cities);
+    }
+
+    /**
+     * Test UseCase12
+     */
+    @Test
+    void printUseCase12TestNull()
+    {
+        app.printUseCase12(null);
+    }
+
+    @Test
+    void printUseCase12TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase12(cities);
+    }
+
+    @Test
+    void printUseCase12TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase12(cities);
+    }
+
+    @Test
+    void printUseCase12TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c12 = new City();
+        c12.name = "Munich";
+        c12.population = 1194560;
+        c12.continent = "Europe";
+        cities.add(c12);
+        app.printUseCase12(cities);
+    }
+
+    /**
+     * Test UseCase13
+     */
+    @Test
+    void printUseCase13TestNull()
+    {
+        app.printUseCase13(null);
+    }
+
+    @Test
+    void printUseCase13TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase13(cities);
+    }
+
+    @Test
+    void printUseCase13TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase13(cities);
+    }
+
+    @Test
+    void printUseCase13TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c13 = new City();
+        c13.name = "Munich";
+        c13.population = 1194560;
+        c13.continent = "Western Europe";
+        cities.add(c13);
+        app.printUseCase13(cities);
+    }
+
+    /**
+     * Test UseCase14
+     */
+    @Test
+    void printUseCase14TestNull()
+    {
+        app.printUseCase14(null);
+    }
+
+    @Test
+    void printUseCase14TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase14(cities);
+    }
+
+    @Test
+    void printUseCase14TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase14(cities);
+    }
+
+    @Test
+    void printUseCase14TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c14 = new City();
+        c14.name = "Munich";
+        c14.population = 1194560;
+        c14.country = "Germany";
+        cities.add(c14);
+        app.printUseCase14(cities);
+    }
+
+    /**
+     * Test UseCase15
+     */
+    @Test
+    void printUseCase15TestNull()
+    {
+        app.printUseCase15(null);
+    }
+
+    @Test
+    void printUseCase15TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase15(cities);
+    }
+
+    @Test
+    void printUseCase15TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase15(cities);
+    }
+
+    @Test
+    void printUseCase15TestValidData()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City c15 = new City();
+        c15.name = "Munich";
+        c15.population = 1194560;
+        c15.district = "Baijeri";
+        cities.add(c15);
+        app.printUseCase15(cities);
+    }
+
+    /**
+     * Test UseCase16
+     */
+    @Test
+    void printUseCase16TestNull()
+    {
+        app.printUseCase16(null);
+    }
+
+    @Test
+    void printUseCase16TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase16(countries);
+    }
+
+    @Test
+    void printUseCase16TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase16(countries);
+    }
+
+    @Test
+    void printUseCase16TestValidData()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c16 = new Country();
+        c16.name = "Munich";
+        c16.population = 1194560;
+        countries.add(c16);
+        app.printUseCase16(countries);
     }
 
 }
