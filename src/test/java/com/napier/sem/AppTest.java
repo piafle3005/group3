@@ -313,7 +313,7 @@ public class AppTest {
     void printUseCase17TestValidData()
     {
         /**
-         *Test what happens under normal conditions
+         *Test what happens under normal condition
          */
         ArrayList<City> capital = new ArrayList<City>();
         City c1 = new City();
