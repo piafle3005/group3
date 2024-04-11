@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import java.math.BigDecimal;
+
 //This class represents a country
 public class Country{
     //The code of a country
@@ -19,5 +21,13 @@ public class Country{
 
     //The capital city of a country
     public String capital;
+
+    public String language;
+
+    public double percentage;
+
+    public int total_speaker;
+
+    public double percentage_of_world_population;
 
 }
