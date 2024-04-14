@@ -30,4 +30,6 @@ public class Country{
 
     public double percentage_of_world_population;
 
+    public long total_population;
+
 }

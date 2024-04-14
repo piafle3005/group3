@@ -547,7 +547,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Continent"));
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Country"));
         // Loop over all cities in the list
         for (City c9 : city)
         {
@@ -1016,7 +1016,7 @@ public class App
                 System.out.println("Null capital found.");
                 continue;
             }
-            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, c17.name);
+            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, c17.country);
             System.out.println(c17_string);
         }
     } //Print use case 17
@@ -1475,7 +1475,7 @@ public class App
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s",
                 "Continent", "Population", "Population not in Cities", "Population in Cities"));
-        System.out.println("--------------------------------------------------------------------------------");
+        //System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
         for (Population data : population) {
@@ -1510,7 +1510,7 @@ public class App
             while (rset.next())
             {
                 Country c26 = new Country();
-                c26.name = rset.getString("total_population");
+                c26.total_population = rset.getLong("total_population");
                 country26.add(c26);
 
             }
@@ -1538,7 +1538,7 @@ public class App
                 continue;
             }
             String c1_string = String.format("%-20s", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
-                    c1.name);
+                    c1.total_population);
             System.out.println(c1_string);
         }
     }
@@ -1889,12 +1889,14 @@ public class App
         ArrayList<Population> p1 = a.getUseCase25();
         a.printUseCase25(p1);
 
+
         //print UseCase26
         ArrayList<Country> p26 = a.getUseCase26();
         a.printUseCase26(p26);
 
         ArrayList<Country> p32 = a.getUseCase32();
         a.printUseCase32(p32);
+
 
 
         // Disconnect from database
