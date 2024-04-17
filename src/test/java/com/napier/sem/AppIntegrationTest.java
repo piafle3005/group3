@@ -21,10 +21,43 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase1TestNull()
+    {
+        /**
+         *Test what happens if the given data is null
+         */
+        app.printUseCase1(null);
+        app.getUseCase1(null);
+    }
+
+    @Test
+    void printUseCase1TestEmpty()
+    {
+        /**
+         *Test what happens if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase1(countries);
+        app.getUseCase1(" ");
+    }
+
+    @Test
+    void printUseCase1TestContainsNull()
+    {
+        /**
+         *Test what happens if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase1(countries);
+        app.getUseCase1(" ");
+    }
+
+    @Test
     void printUseCase1TestValidData()
     {
         /**
-         *Test what happens under normal condition
+         * Tests w
          */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
@@ -37,6 +70,30 @@ public class AppIntegrationTest
         assertEquals(c1.name, "Germany");
         assertEquals(c1.continent, "Europe");
         assertEquals(c1.population, 83200000);
+    }
+
+    @Test
+    void printUseCase2TestNull()
+    {
+        app.printUseCase2(null);
+        app.getUseCase2(null);
+    }
+
+    @Test
+    void printUseCase2TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase2(countries);
+        app.getUseCase2(" ");
+    }
+
+    @Test
+    void printUseCase2TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase2(countries);
+        app.getUseCase2(" ");
     }
 
     @Test
