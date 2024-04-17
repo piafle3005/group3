@@ -71,12 +71,18 @@ public class AppTest {
     @Test
     void printUseCase2TestNull()
     {
+        /**
+         *Test what happens if the given is null
+         */
         app.printUseCase2(null);
     }
 
     @Test
     void printUseCase2TestEmpty()
     {
+        /**
+         *Test what happens if the given data is empty
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase2(countries);
     }
@@ -84,6 +90,9 @@ public class AppTest {
     @Test
     void printUseCase2TestContainsNull()
     {
+        /**
+         *Test what happens if the given data contains null
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase2(countries);
@@ -92,6 +101,9 @@ public class AppTest {
     @Test
     void printUseCase2TestValidData()
     {
+        /**
+         *Test what happens under normal condition
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";

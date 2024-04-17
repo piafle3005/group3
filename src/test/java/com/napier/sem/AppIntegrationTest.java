@@ -10,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest
 {
+    /**
+     * The class is testing what the database does with the implemented methods and shows the output
+     * The integrationTests are basically the same, they are testing for null case, empty case,
+     * containsNull case and valid data
+     * The first three useCases are fully tested to show how it works
+     * The other methods are tested for null and valid data
+     */
     static App app;
 
     @BeforeAll
@@ -20,11 +27,14 @@ public class AppIntegrationTest
 
     }
 
+    /**
+     * UseCase1
+     */
     @Test
     void printUseCase1TestNull()
     {
         /**
-         *Test what happens if the given data is null
+         *Test what the database does if the given data is null
          */
         app.printUseCase1(null);
         app.getUseCase1(null);
@@ -34,7 +44,7 @@ public class AppIntegrationTest
     void printUseCase1TestEmpty()
     {
         /**
-         *Test what happens if the given data is empty
+         *Test what the database does if the given data is empty
          */
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase1(countries);
@@ -45,7 +55,7 @@ public class AppIntegrationTest
     void printUseCase1TestContainsNull()
     {
         /**
-         *Test what happens if the given data contains null
+         *Test what the database does if the given data contains null
          */
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
@@ -57,7 +67,7 @@ public class AppIntegrationTest
     void printUseCase1TestValidData()
     {
         /**
-         * Tests w
+         *Test what the database does under normal condition
          */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
@@ -72,9 +82,15 @@ public class AppIntegrationTest
         assertEquals(c1.population, 83200000);
     }
 
+    /**
+     * UseCase2
+     */
     @Test
     void printUseCase2TestNull()
     {
+        /**
+         *Test what the database does if the given data is null
+         */
         app.printUseCase2(null);
         app.getUseCase2(null);
     }
@@ -82,6 +98,9 @@ public class AppIntegrationTest
     @Test
     void printUseCase2TestEmpty()
     {
+        /**
+         *Test what the database does if the given data is empty
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase2(countries);
         app.getUseCase2(" ");
@@ -90,6 +109,9 @@ public class AppIntegrationTest
     @Test
     void printUseCase2TestContainsNull()
     {
+        /**
+         *Test what the database does if the given data contains null
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase2(countries);
@@ -99,6 +121,9 @@ public class AppIntegrationTest
     @Test
     void printUseCase2TestValidData()
     {
+        /**
+         *Test what the database does under normal condition
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";
@@ -112,7 +137,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
-
+    /**
+     * UseCase3
+     */
     @Test
     void printUseCase3TestNull()
     {
@@ -150,6 +177,15 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
+    /**
+     * UseCase4
+     */
+    @Test
+    void printUseCase4TestNull()
+    {
+        app.printUseCase3(null);
+        app.getUseCase4(null,0);
+    }
     @Test
     void printUseCase4TestValidData()
     {
@@ -164,7 +200,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
-
+    /**
+     * UseCase5
+     */
     void printUseCase5TestNull()
     {
         app.printUseCase5(null);
@@ -185,6 +223,14 @@ public class AppIntegrationTest
         assertEquals(c1.population, 83200000);
     }
 
+    /**
+     * UseCase6
+     */
+    void printUseCase6TestNull()
+    {
+        app.printUseCase5(null);
+        app.getUseCase6(null, 0);
+    }
     @Test
     void printUseCase6TestValidData()
     {
@@ -201,6 +247,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
+    /**
+     * UseCase7
+     */
     @Test
     void printUseCase7TestNull()
     {
@@ -223,6 +272,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 450180);
     }
 
+    /**
+     * UseCase8
+     */
     @Test
     void printUseCase8TestNull()
     {
@@ -248,6 +300,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 1194560);
     }
 
+    /**
+     * UseCase9
+     */
     @Test
     void printUseCase9TestNull()
     {
@@ -272,6 +327,9 @@ public class AppIntegrationTest
         assertEquals(c1.population,2125246 );
     }
 
+    /**
+     * UseCase10
+     */
     @Test
     void printUseCase10TestNull()
     {
@@ -295,6 +353,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 398695);
     }
 
+    /**
+     * UseCase11
+     */
     @Test
     void printUseCase11TestNull()
     {
@@ -316,6 +377,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 7285000);
     }
 
+    /**
+     * UseCase12
+     */
     @Test
     void printUseCase12TestNull()
     {
@@ -340,6 +404,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 731200);
     }
 
+    /**
+     * UseCase13
+     */
     @Test
     void printUseCase13TestNull()
     {
@@ -363,6 +430,9 @@ public class AppIntegrationTest
         assertEquals(c1.region, "Southern Europe");
     }
 
+    /**
+     * UseCase14
+     */
     @Test
     void printUseCase14TestNull()
     {
@@ -386,6 +456,9 @@ public class AppIntegrationTest
         assertEquals(c1.population, 619680);
     }
 
+    /**
+     * UseCase15
+     */
     @Test
     void printUseCase15TestNull()
     {
@@ -410,6 +483,9 @@ public class AppIntegrationTest
         assertEquals(c15.district, "Baijeri");;
     }
 
+    /**
+     * UseCase16
+     */
     @Test
     void printUseCase16TestNull()
     {
@@ -429,6 +505,9 @@ public class AppIntegrationTest
         app.getUseCase16();
     }
 
+    /**
+     * UseCase17
+     */
     @Test
     void printUseCase17TestNull()
     {
@@ -453,6 +532,9 @@ public class AppIntegrationTest
         assertEquals(c17.country, "United Kingdom");
     }
 
+    /**
+     * UseCase18
+     */
     @Test
     void printUseCase18TestNull()
     {
@@ -476,6 +558,9 @@ public class AppIntegrationTest
         assertEquals(c18.region, "Lothian");
     }
 
+    /**
+     * UseCase19
+     */
     @Test
     void printUseCase19TestNull()
     {
@@ -500,6 +585,9 @@ public class AppIntegrationTest
         assertEquals(c19.continent, "Europe");
     }
 
+    /**
+     * UseCase20
+     */
     @Test
     void printUseCase20TestNull()
     {
@@ -522,6 +610,9 @@ public class AppIntegrationTest
         assertEquals(c20.population, 558676);
     }
 
+    /**
+     * UseCase21
+     */
     @Test
     void printUseCase21TestNull()
     {
@@ -547,6 +638,9 @@ public class AppIntegrationTest
 
     }
 
+    /**
+     * UseCase22
+     */
     @Test
     void printUseCase22TestNull()
     {
@@ -570,7 +664,10 @@ public class AppIntegrationTest
         assertEquals(c22.population, 558676);
         assertEquals(c22.region, "Lothian");
     }
-    
+
+    /**
+     * UseCase23
+     */
     @Test
     void printUseCase23TestNull()
     {
@@ -597,6 +694,9 @@ public class AppIntegrationTest
         assertEquals(p23.population_nc, 3000);
     }
 
+    /**
+     * UseCase24
+     */
     @Test
     void printUseCase24TestNull()
     {
@@ -623,6 +723,9 @@ public class AppIntegrationTest
         assertEquals(p24.population_nc, 3000);
     }
 
+    /**
+     * UseCase25
+     */
     @Test
     void printUseCase25TestNull()
     {
@@ -649,6 +752,9 @@ public class AppIntegrationTest
         assertEquals(p25.population_nc, 2342);
     }
 
+    /**
+     * UseCase26
+     */
     @Test
     void printUseCase26TestNull()
     {
@@ -669,6 +775,9 @@ public class AppIntegrationTest
         assertEquals(c1.total_population, 1412000000);
     }
 
+    /**
+     * UseCase27
+     */
     @Test
     void printUseCase27TestNull()
     {
@@ -684,6 +793,9 @@ public class AppIntegrationTest
         assertEquals(continentPopulation, 730074600);
     }
 
+    /**
+     * UseCase28
+     */
     @Test
     void printUseCase28TestNull()
     {
@@ -699,6 +811,9 @@ public class AppIntegrationTest
         assertEquals(regionPopulation, 183247600);
     }
 
+    /**
+     * UseCase29
+     */
     @Test
     void printUseCase29TestNull()
     {
@@ -714,6 +829,9 @@ public class AppIntegrationTest
         assertEquals(districtPopulation, 2510408);
     }
 
+    /**
+     * UseCase30
+     */
     @Test
     void printUseCase30TestNull()
     {
@@ -729,6 +847,9 @@ public class AppIntegrationTest
         assertEquals(countryPopulation, 59225700);
     }
 
+    /**
+     * UseCase31
+     */
     @Test
     void printUseCase31TestNull()
     {

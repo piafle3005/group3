@@ -14,7 +14,9 @@ public class Population {
     //The total Population of continent, region or country not living in cities (including a %)
     public long population_nc;
 
+    // population of a continent
     public String continent;
 
+    // population of a region
     public String region;
 }
