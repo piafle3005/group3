@@ -14,8 +14,6 @@ public class AppIntegrationTest
      * The class is testing what the database does with the implemented methods and shows the output
      * The integrationTests are basically the same, they are testing for null case, empty case,
      * containsNull case and valid data
-     * The first three useCases are fully tested to show how it works
-     * The other methods are tested for null and valid data
      */
     static App app;
 
@@ -186,6 +184,22 @@ public class AppIntegrationTest
         app.printUseCase3(null);
         app.getUseCase4(null,0);
     }
+
+    @Test
+    void printUseCase4TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase3(countries);
+        app.getUseCase4(" ", 0);
+    }
+
+    @Test
+    void printUseCase4TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase3(countries);
+    }
     @Test
     void printUseCase4TestValidData()
     {
@@ -203,10 +217,27 @@ public class AppIntegrationTest
     /**
      * UseCase5
      */
+    @Test
     void printUseCase5TestNull()
     {
         app.printUseCase5(null);
         app.getUseCase5();
+    }
+
+    @Test
+    void printUseCase5TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase5(countries);
+        app.getUseCase5();
+    }
+
+    @Test
+    void printUseCase5TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase5(countries);
     }
 
     @Test
@@ -226,11 +257,29 @@ public class AppIntegrationTest
     /**
      * UseCase6
      */
+    @Test
     void printUseCase6TestNull()
     {
         app.printUseCase5(null);
         app.getUseCase6(null, 0);
     }
+
+    @Test
+    void printUseCase6TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase2(countries);
+        app.getUseCase6(" ", 0);
+    }
+
+    @Test
+    void printUseCase6TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase2(countries);
+    }
+
     @Test
     void printUseCase6TestValidData()
     {
@@ -259,6 +308,22 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase7TestEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase7(cities);
+        app.getUseCase7();
+    }
+
+    @Test
+    void printUseCase7TestContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase7(cities);
+    }
+
+    @Test
     void printUseCase7TestValidData()
     {
         ArrayList<City> cities = new ArrayList<City>();
@@ -280,6 +345,29 @@ public class AppIntegrationTest
     {
         
         app.printUseCase8(null);
+        app.getUseCase8(null);
+    }
+
+    @Test
+    void printUseCase8TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase8(cities);
+        app.getUseCase8(" ");
+    }
+
+    @Test
+    void printUseCase8TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase8(cities);
         app.getUseCase8(null);
     }
 
@@ -310,7 +398,30 @@ public class AppIntegrationTest
         app.printUseCase9(null);
         app.getUseCase9(null);
     }
-    
+
+    @Test
+    void printUseCase9TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase9(cities);
+        app.getUseCase9(" ");
+    }
+
+    @Test
+    void printUseCase9TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase9(cities);
+        app.getUseCase9(null);
+    }
+
     @Test
     void printUseCase9TestValidData()
     {
@@ -335,6 +446,29 @@ public class AppIntegrationTest
     {
 
         app.printUseCase10(null);
+        app.getUseCase10(null);
+    }
+
+    @Test
+    void printUseCase10TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase10(cities);
+        app.getUseCase10(" ");
+    }
+
+    @Test
+    void printUseCase10TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase10(cities);
         app.getUseCase10(null);
     }
     @Test
@@ -363,6 +497,29 @@ public class AppIntegrationTest
         app.printUseCase11(null);
         app.getUseCase11(0);
     }
+
+    @Test
+    void printUseCase11TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase11(cities);
+        app.getUseCase11(0);
+    }
+
+    @Test
+    void printUseCase11TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase11(cities);
+        app.getUseCase11(0);
+    }
     @Test
     void printUseCase11TestValidData()
     {
@@ -385,6 +542,29 @@ public class AppIntegrationTest
     {
 
         app.printUseCase12(null);
+        app.getUseCase12(0, null);
+    }
+
+    @Test
+    void printUseCase12TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase12(cities);
+        app.getUseCase12(0, " ");
+    }
+
+    @Test
+    void printUseCase12TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase12(cities);
         app.getUseCase12(0, null);
     }
     
@@ -414,6 +594,29 @@ public class AppIntegrationTest
         app.printUseCase13(null);
         app.getUseCase13(0, null);
     }
+
+    @Test
+    void printUseCase13TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase13(cities);
+        app.getUseCase13(0, " ");
+    }
+
+    @Test
+    void printUseCase13TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase13(cities);
+        app.getUseCase13(0, null);
+    }
     @Test
     void printUseCase13TestValidData()
     {
@@ -438,6 +641,29 @@ public class AppIntegrationTest
     {
 
         app.printUseCase14(null);
+        app.getUseCase14(0, null);
+    }
+
+    @Test
+    void printUseCase14TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase14(cities);
+        app.getUseCase14(0, " ");
+    }
+
+    @Test
+    void printUseCase14TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase14(cities);
         app.getUseCase14(0, null);
     }
     @Test
@@ -468,6 +694,29 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase15TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase15(cities);
+        app.getUseCase15(0, " ");
+    }
+
+    @Test
+    void printUseCase15TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase15(cities);
+        app.getUseCase15(0, null);
+    }
+
+    @Test
     void printUseCase15TestValidData()
     {
         ArrayList<City> cities = new ArrayList<City>();
@@ -493,6 +742,29 @@ public class AppIntegrationTest
         app.printUseCase16(null);
         app.getUseCase16();
     }
+
+    @Test
+    void printUseCase16TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase16(countries);
+        app.getUseCase16();
+    }
+
+    @Test
+    void printUseCase16TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase16(countries);
+        app.getUseCase16();
+    }
     @Test
     void printUseCase16TestValidData()
     {
@@ -514,6 +786,29 @@ public class AppIntegrationTest
 
         app.printUseCase17(null);
         app.getUseCase17(0, null);
+    }
+
+    @Test
+    void printUseCase17TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase17(cities);
+        app.getUseCase17(0, " ");
+    }
+
+    @Test
+    void printUseCase17TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase17(cities);
+        app.getUseCase17(0, " ");
     }
 
     @Test
@@ -542,6 +837,29 @@ public class AppIntegrationTest
         app.printUseCase18(null);
         app.getUseCase18(null);
     }
+
+    @Test
+    void printUseCase18TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase18(countries);
+        app.getUseCase18(" ");
+    }
+
+    @Test
+    void printUseCase18TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase18(countries);
+        app.getUseCase18(" ");
+    }
     @Test
     void printUseCase18TestValidData()
     {
@@ -567,6 +885,29 @@ public class AppIntegrationTest
 
         app.printUseCase19(null);
         app.getUseCase19(null);
+    }
+
+    @Test
+    void printUseCase19TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase19(countries);
+        app.getUseCase19(" ");
+    }
+
+    @Test
+    void printUseCase19TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase19(countries);
+        app.getUseCase19(" ");
     }
     
     @Test
@@ -595,6 +936,29 @@ public class AppIntegrationTest
         app.printUseCase20(null);
         app.getUseCase20(0);
     }
+
+    @Test
+    void printUseCase20TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase20(countries);
+        app.getUseCase20(0);
+    }
+
+    @Test
+    void printUseCase20TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase20(countries);
+        app.getUseCase20(0);
+    }
     
     @Test
     void printUseCase20TestValidData()
@@ -620,7 +984,30 @@ public class AppIntegrationTest
         app.printUseCase21(null);
         app.getUseCase21(0, null);
     }
-    
+
+    @Test
+    void printUseCase21TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase21(countries);
+        app.getUseCase21(0, " ");
+    }
+
+    @Test
+    void printUseCase21TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase21(countries);
+        app.getUseCase21(0, null);
+    }
+
     @Test
     void printUseCase21TestValidData()
     {
@@ -648,7 +1035,30 @@ public class AppIntegrationTest
         app.printUseCase22(null);
         app.getUseCase22(0, null);
     }
-    
+
+    @Test
+    void printUseCase22TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase22(countries);
+        app.getUseCase22(0, null);
+    }
+
+    @Test
+    void printUseCase22TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase22(countries);
+        app.getUseCase22(0,null);
+    }
+
     @Test
     void printUseCase22TestValidData()
     {
@@ -675,7 +1085,30 @@ public class AppIntegrationTest
         app.printUseCase23(null);
         app.getUseCase23();
     }
-    
+
+    @Test
+    void printUseCase23TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printUseCase23(populations);
+        app.getUseCase23();
+    }
+
+    @Test
+    void printUseCase23TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase23(populations);
+        app.getUseCase23();
+    }
+
     @Test
     void printUseCase23TestValidData()
     {
@@ -704,7 +1137,30 @@ public class AppIntegrationTest
         app.printUseCase24(null);
         app.getUseCase24();
     }
-    
+
+    @Test
+    void printUseCase24TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printUseCase24(populations);
+        app.getUseCase24();
+    }
+
+    @Test
+    void printUseCase24TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase24(populations);
+        app.getUseCase24();
+    }
+
     @Test
     void printUseCase24TestValidData()
     {
@@ -731,6 +1187,29 @@ public class AppIntegrationTest
     {
 
         app.printUseCase25(null);
+        app.getUseCase25();
+    }
+
+    @Test
+    void printUseCase25TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printUseCase25(populations);
+        app.getUseCase25();
+    }
+
+    @Test
+    void printUseCase25TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase25(populations);
         app.getUseCase25();
     }
     
@@ -762,6 +1241,29 @@ public class AppIntegrationTest
         app.printUseCase26(null);
         app.getUseCase26();
     }
+
+    @Test
+    void printUseCase26TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase26(countries);
+        app.getUseCase26();
+    }
+
+    @Test
+    void printUseCase26TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase24(populations);
+        app.getUseCase24();
+    }
     
     @Test
     void printUseCase26TestValidData()
@@ -784,6 +1286,29 @@ public class AppIntegrationTest
         app.printUseCase27(null, 0);
         app.getUseCase27(null);
     }
+
+    @Test
+    void printUseCase27TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase27(" ", 0);
+        app.getUseCase27(" ");
+    }
+
+    @Test
+    void printUseCase27TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase27(null, 0);
+        app.getUseCase27(null);
+    }
     
     @Test
     void printUseCase27TestValidData()
@@ -799,6 +1324,29 @@ public class AppIntegrationTest
     @Test
     void printUseCase28TestNull()
     {
+        app.printUseCase28(null, 0);
+        app.getUseCase28(null);
+    }
+
+    @Test
+    void printUseCase28TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase28(" ", 0);
+        app.getUseCase28(" ");
+    }
+
+    @Test
+    void printUseCase28TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
         app.printUseCase28(null, 0);
         app.getUseCase28(null);
     }
@@ -820,6 +1368,29 @@ public class AppIntegrationTest
         app.printUseCase29(null, 0);
         app.getUseCase29(null);
     }
+
+    @Test
+    void printUseCase29TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase29(" ", 0);
+        app.getUseCase29(" ");
+    }
+
+    @Test
+    void printUseCase29TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase29(null, 0);
+        app.getUseCase29(null);
+    }
     
     @Test
     void printUseCase29TestValidData()
@@ -838,6 +1409,29 @@ public class AppIntegrationTest
         app.printUseCase30(null, 0);
         app.getUseCase30(null);
     }
+
+    @Test
+    void printUseCase30TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase30(" ", 0);
+        app.getUseCase30(" ");
+    }
+
+    @Test
+    void printUseCase30TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printUseCase30(null, 0);
+        app.getUseCase30(null);
+    }
     
     @Test
     void printUseCase30TestValidData()
@@ -853,6 +1447,29 @@ public class AppIntegrationTest
     @Test
     void printUseCase31TestNull()
     {
+        app.printCityPopulation(null, 0);
+        app.getUseCase31(null);
+    }
+
+    @Test
+    void printUseCase31TestEmpty()
+    {
+        /**
+         *Test what the database does if the given data is empty
+         */
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCityPopulation(" ", 0);
+        app.getUseCase31(" ");
+    }
+
+    @Test
+    void printUseCase31TestContainsNull()
+    {
+        /**
+         *Test what the database does if the given data contains null
+         */
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
         app.printCityPopulation(null, 0);
         app.getUseCase31(null);
     }
