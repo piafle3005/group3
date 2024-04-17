@@ -150,6 +150,20 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
+    @Test
+    void printUseCase4TestValidData()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.name= "Germany";
+        c1.population = 82164700;
+        countries.add(c1);
+        app.printUseCase3(countries);
+        app.getUseCase4("Europe", 3);
+        assertEquals(c1.name, "Germany");
+        assertEquals(c1.population, 82164700);
+    }
+
 
     void printUseCase5TestNull()
     {
@@ -169,6 +183,22 @@ public class AppIntegrationTest
         app.getUseCase5();
         assertEquals(c1.name, "Germany");
         assertEquals(c1.population, 83200000);
+    }
+
+    @Test
+    void printUseCase6TestValidData()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.name= "Germany";
+        c1.region = "Western Europe";
+        c1.population= 82164700;
+        countries.add(c1);
+        app.printUseCase2(countries);
+        app.getUseCase6("Western Europe", 8);
+        assertEquals(c1.name, "Germany");
+        assertEquals(c1.region, "Western Europe");
+        assertEquals(c1.population, 82164700);
     }
 
     @Test

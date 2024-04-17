@@ -1716,69 +1716,6 @@ public class App
         }
     }
 
-    //Usecase32
-    public ArrayList<Country> getUseCase32()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect =
-
-                    "SELECT country.name, countrylanguage.language, country.population, countrylanguage.percentage, country.population*(countrylanguage.percentage/100) AS total_speaker "
-                            + "FROM countrylanguage, country "
-                            + "WHERE countrylanguage.countryCode = country.code "
-                            + "AND countrylanguage.language IN ('Chinese') ";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Return new country if valid.
-            // Check one is returned
-            ArrayList<Country> country = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country7 = new Country();
-                country7.name = rset.getString("name");
-                country7.language = rset.getString("language");
-                country7.population = rset.getInt("population");
-                country7.percentage = rset.getDouble("percentage");
-                country7.total_speaker = rset.getInt("total_speaker");
-                //country7.total_speaker = rset.getBigDecimal("total_speaker");
-                //country7.percentage_of_world_population = rset.getDouble("percentage_of_world_population");
-                country.add(country7);
-            }
-            return country;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get language information");
-            return null;
-        }
-    }
-
-    public void printUseCase32(ArrayList<Country> country) {
-        if (country == null) {
-            System.out.println("No cities found.");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-20s %-30s %-30s %-30s %-30s", "Name", "Language", "Population" ,"Percentage", "total_speaker"));
-        // Loop over all countries in the list
-        for (Country c1 : country) {
-            if (c1 == null) {
-                System.out.println("Null city found.");
-                continue;
-            }
-            String c1_string = String.format("%-20s  %-30s %-30s %-30s %-30s",
-                    c1.name, c1.language, c1.population, c1.percentage, c1.total_speaker);
-            System.out.println(c1_string);
-        }
-    }
-
     public static void main(String[] args)
     {
         App a = new App();
@@ -1889,15 +1826,9 @@ public class App
         ArrayList<Population> p1 = a.getUseCase25();
         a.printUseCase25(p1);
 
-
         //print UseCase26
         ArrayList<Country> p26 = a.getUseCase26();
         a.printUseCase26(p26);
-
-        ArrayList<Country> p32 = a.getUseCase32();
-        a.printUseCase32(p32);
-
-
 
         // Disconnect from database
         a.disconnect();
