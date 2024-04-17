@@ -112,6 +112,30 @@ public class AppIntegrationTest
         assertEquals(c1.population, 82164700);
     }
 
+
+    @Test
+    void printUseCase3TestNull()
+    {
+        app.printUseCase3(null);
+        app.getUseCase3(0);
+    }
+
+    @Test
+    void printUseCase3TestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase3(countries);
+        app.getUseCase3(8);
+    }
+
+    @Test
+    void printUseCase3TestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase3(countries);
+    }
+
     @Test
     void printUseCase3TestValidData()
     {
@@ -124,6 +148,13 @@ public class AppIntegrationTest
         app.getUseCase3(3);
         assertEquals(c1.name, "Germany");
         assertEquals(c1.population, 82164700);
+    }
+
+
+    void printUseCase5TestNull()
+    {
+        app.printUseCase5(null);
+        app.getUseCase5();
     }
 
     @Test
@@ -141,6 +172,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase7TestNull()
+    {
+
+        app.printUseCase7(null);
+        app.getUseCase7();
+    }
+
+    @Test
     void printUseCase7TestValidData()
     {
         ArrayList<City> cities = new ArrayList<City>();
@@ -153,6 +192,15 @@ public class AppIntegrationTest
         assertEquals(c1.name, "Edinburgh");
         assertEquals(c1.population, 450180);
     }
+
+    @Test
+    void printUseCase8TestNull()
+    {
+        
+        app.printUseCase8(null);
+        app.getUseCase8(null);
+    }
+
 
     @Test
     void printUseCase8TestValidData()
@@ -171,6 +219,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase9TestNull()
+    {
+
+        app.printUseCase9(null);
+        app.getUseCase9(null);
+    }
+    
+    @Test
     void printUseCase9TestValidData()
     {
         ArrayList<City> cities = new ArrayList<>();
@@ -184,6 +240,14 @@ public class AppIntegrationTest
         assertEquals(c1.name, "Paris");
         assertEquals(c1.country, "France");
         assertEquals(c1.population,2125246 );
+    }
+
+    @Test
+    void printUseCase10TestNull()
+    {
+
+        app.printUseCase10(null);
+        app.getUseCase10(null);
     }
     @Test
     void printUseCase10TestValidData()
@@ -200,6 +264,14 @@ public class AppIntegrationTest
         assertEquals(c1.district, "Abu Dhabi");
         assertEquals(c1.population, 398695);
     }
+
+    @Test
+    void printUseCase11TestNull()
+    {
+
+        app.printUseCase11(null);
+        app.getUseCase11(0);
+    }
     @Test
     void printUseCase11TestValidData()
     {
@@ -213,6 +285,15 @@ public class AppIntegrationTest
         assertEquals(c1.name, "London");
         assertEquals(c1.population, 7285000);
     }
+
+    @Test
+    void printUseCase12TestNull()
+    {
+
+        app.printUseCase12(null);
+        app.getUseCase12(0, null);
+    }
+    
     @Test
     void printUseCase12TestValidData()
     {
@@ -228,6 +309,14 @@ public class AppIntegrationTest
         assertEquals(c1.continent, "Europe");
         assertEquals(c1.population, 731200);
     }
+
+    @Test
+    void printUseCase13TestNull()
+    {
+
+        app.printUseCase13(null);
+        app.getUseCase13(0, null);
+    }
     @Test
     void printUseCase13TestValidData()
     {
@@ -242,6 +331,14 @@ public class AppIntegrationTest
         assertEquals(c1.name, "Madrid");
         assertEquals(c1.population, 2879052);
         assertEquals(c1.region, "Southern Europe");
+    }
+
+    @Test
+    void printUseCase14TestNull()
+    {
+
+        app.printUseCase14(null);
+        app.getUseCase14(0, null);
     }
     @Test
     void printUseCase14TestValidData()
@@ -260,6 +357,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase15TestNull()
+    {
+
+        app.printUseCase15(null);
+        app.getUseCase15(0, null);
+    }
+
+    @Test
     void printUseCase15TestValidData()
     {
         ArrayList<City> cities = new ArrayList<City>();
@@ -274,6 +379,14 @@ public class AppIntegrationTest
         assertEquals(c15.population, 1194560);
         assertEquals(c15.district, "Baijeri");;
     }
+
+    @Test
+    void printUseCase16TestNull()
+    {
+
+        app.printUseCase16(null);
+        app.getUseCase16();
+    }
     @Test
     void printUseCase16TestValidData()
     {
@@ -284,6 +397,14 @@ public class AppIntegrationTest
         capital.add(capital1);
         app.printUseCase16(capital);
         app.getUseCase16();
+    }
+
+    @Test
+    void printUseCase17TestNull()
+    {
+
+        app.printUseCase17(null);
+        app.getUseCase17(0, null);
     }
 
     @Test
@@ -303,6 +424,13 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase18TestNull()
+    {
+
+        app.printUseCase18(null);
+        app.getUseCase18(null);
+    }
+    @Test
     void printUseCase18TestValidData()
     {
         ArrayList<Country> capital = new ArrayList<Country>();
@@ -318,6 +446,14 @@ public class AppIntegrationTest
         assertEquals(c18.region, "Lothian");
     }
 
+    @Test
+    void printUseCase19TestNull()
+    {
+
+        app.printUseCase19(null);
+        app.getUseCase19(null);
+    }
+    
     @Test
     void printUseCase19TestValidData()
     {
@@ -335,6 +471,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase20TestNull()
+    {
+
+        app.printUseCase20(null);
+        app.getUseCase20(0);
+    }
+    
+    @Test
     void printUseCase20TestValidData()
     {
         ArrayList<Country> capital = new ArrayList<Country>();
@@ -348,6 +492,14 @@ public class AppIntegrationTest
         assertEquals(c20.population, 558676);
     }
 
+    @Test
+    void printUseCase21TestNull()
+    {
+
+        app.printUseCase21(null);
+        app.getUseCase21(0, null);
+    }
+    
     @Test
     void printUseCase21TestValidData()
     {
@@ -366,6 +518,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase22TestNull()
+    {
+
+        app.printUseCase22(null);
+        app.getUseCase22(0, null);
+    }
+    
+    @Test
     void printUseCase22TestValidData()
     {
         ArrayList<Country> capital = new ArrayList<Country>();
@@ -380,7 +540,15 @@ public class AppIntegrationTest
         assertEquals(c22.population, 558676);
         assertEquals(c22.region, "Lothian");
     }
+    
+    @Test
+    void printUseCase23TestNull()
+    {
 
+        app.printUseCase23(null);
+        app.getUseCase23();
+    }
+    
     @Test
     void printUseCase23TestValidData()
     {
@@ -400,6 +568,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase24TestNull()
+    {
+
+        app.printUseCase24(null);
+        app.getUseCase24();
+    }
+    
+    @Test
     void printUseCase24TestValidData()
     {
         ArrayList<Population> population = new ArrayList<Population>();
@@ -417,6 +593,14 @@ public class AppIntegrationTest
         assertEquals(p24.population_nc, 3000);
     }
 
+    @Test
+    void printUseCase25TestNull()
+    {
+
+        app.printUseCase25(null);
+        app.getUseCase25();
+    }
+    
     @Test
     void printUseCase25TestValidData()
     {
@@ -436,6 +620,14 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase26TestNull()
+    {
+
+        app.printUseCase26(null);
+        app.getUseCase26();
+    }
+    
+    @Test
     void printUseCase26TestValidData()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
@@ -448,6 +640,13 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase27TestNull()
+    {
+        app.printUseCase27(null, 0);
+        app.getUseCase27(null);
+    }
+    
+    @Test
     void printUseCase27TestValidData()
     {
         long continentPopulation = app.getUseCase27("Europe");
@@ -455,6 +654,13 @@ public class AppIntegrationTest
         assertEquals(continentPopulation, 730074600);
     }
 
+    @Test
+    void printUseCase28TestNull()
+    {
+        app.printUseCase28(null, 0);
+        app.getUseCase28(null);
+    }
+    
     @Test
     void printUseCase28TestValidData()
     {
@@ -464,6 +670,13 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase29TestNull()
+    {
+        app.printUseCase29(null, 0);
+        app.getUseCase29(null);
+    }
+    
+    @Test
     void printUseCase29TestValidData()
     {
         long districtPopulation = app.getUseCase29("Central");
@@ -472,11 +685,25 @@ public class AppIntegrationTest
     }
 
     @Test
+    void printUseCase30TestNull()
+    {
+        app.printUseCase30(null, 0);
+        app.getUseCase30(null);
+    }
+    
+    @Test
     void printUseCase30TestValidData()
     {
         long countryPopulation = app.getUseCase30("France");
         app.printUseCase30("France", 59225700);
         assertEquals(countryPopulation, 59225700);
+    }
+
+    @Test
+    void printUseCase31TestNull()
+    {
+        app.printCityPopulation(null, 0);
+        app.getUseCase31(null);
     }
 
     @Test

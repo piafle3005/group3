@@ -186,6 +186,7 @@ public class AppTest {
     @Test
     void printUseCase7TestNull()
     {
+
         app.printUseCase7(null);
     }
 
@@ -259,6 +260,7 @@ public class AppTest {
     @Test
     void printUseCase9TestNull()
     {
+
         app.printUseCase9(null);
     }
 
@@ -295,6 +297,7 @@ public class AppTest {
     @Test
     void printUseCase10TestNull()
     {
+
         app.printUseCase10(null);
     }
 
@@ -331,6 +334,7 @@ public class AppTest {
     @Test
     void printUseCase11TestNull()
     {
+
         app.printUseCase11(null);
     }
 
