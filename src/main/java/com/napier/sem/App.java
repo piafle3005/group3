@@ -592,7 +592,8 @@ public class App
                     "SELECT city.name, city.population, country.name AS country_name "
                             + "FROM city, country "
                             + "WHERE city.countrycode = country.code "
-                            + "AND country.name = '" + country + "' ";
+                            + "AND country.name = '" + country + "' "
+                            + "ORDER BY city.population DESC";
 
 
             // Execute the SQL Statement
@@ -655,7 +656,7 @@ public class App
                     "SELECT city.name, city.district, city.population "
                             + "FROM city  "
                             + "WHERE city.district = '" + district + "' "
-                            + "ORDER BY city.population ASC";
+                            + "ORDER BY city.population DESC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -894,7 +895,8 @@ public class App
                     "SELECT city.name, city.population, country.name AS country_name "
                             + "FROM city, country "
                             + "WHERE city.countrycode = country.code "
-                            + "AND country.name = '" + country + "' ";
+                            + "AND country.name = '" + country + "' "
+                            + "ORDER BY city.population DESC";
 
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -954,7 +956,8 @@ public class App
             String strSelect =
                     "SELECT city.name, city.population, city.district "
                             + "FROM city "
-                            + "WHERE city.district ='" + district + "' ";
+                            + "WHERE city.district ='" + district + "' "
+                            + "ORDER BY city.population DESC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -1467,7 +1470,6 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s", "Region", "Population",  "Population not in Cities", "Population in Cities"));
-        System.out.println("--------------------------------------------------------------------------------");
 
         // Loop over all population data in the list
         for (Population data : population) {

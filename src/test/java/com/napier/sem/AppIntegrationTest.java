@@ -247,11 +247,13 @@ public class AppIntegrationTest
         Country c1 = new Country();
         c1.name= "Germany";
         c1.population = 82164700;
+        c1.continent = "Europe";
         countries.add(c1);
         app.printUseCase2(countries);
         app.getUseCase5("Europe", 3);
         assertEquals(c1.name, "Germany");
         assertEquals(c1.population, 82164700);
+        assertEquals(c1.continent, "Europe");
     }
 
     /**
@@ -1271,15 +1273,11 @@ public class AppIntegrationTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name = "China";
-        c1.continent = "Asia";
-        c1.population = 1412000000;
+        c1.total_population = 1412000000;
         countries.add(c1);
         app.printUseCase26(countries);
         app.getUseCase26();
-        assertEquals(c1.name, "China");
-        assertEquals(c1.continent, "Asia");
-        assertEquals(c1.population, 1412000000);
+        assertEquals(c1.total_population, 1412000000);
 
     }
 

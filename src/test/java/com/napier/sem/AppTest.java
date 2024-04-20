@@ -449,7 +449,7 @@ public class AppTest {
         City c14 = new City();
         c14.name = "Munich";
         c14.population = 1194560;
-        c14.continent = "Western Europe";
+        c14.region = "Western Europe";
         cities.add(c14);
         app.printUseCase14(cities);
     }
@@ -808,6 +808,7 @@ public class AppTest {
          */
         ArrayList<Population> populations = new ArrayList<Population>();
         Population p25 = new Population();
+        p25.continent = "Europe";
         p25.population = 558676;
         p25.population_c = 7423432;
         p25.population_nc = 2342;
@@ -930,9 +931,7 @@ public class AppTest {
     void printUseCase26TestValidData() {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.name = "China";
-        c1.continent = "Asia";
-        c1.population = 1412000000;
+        c1.total_population = 1412000000;
         countries.add(c1);
         app.printUseCase26(countries);
     }
