@@ -1,10 +1,11 @@
-# USE CASE: 17 Report of top N capital cities in a country, where N is provided by the user.
+# USE CASE: 17 Report of all the capital cities in the world, organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information, I want to create a report of the top N capital cities in a country, where N is provided bt the user.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the capital cities in the world, organised by largest population to smallest.
+
 ### Scope
 
 Organisation.
@@ -15,15 +16,15 @@ Primary task.
 
 ### Preconditions
 
-Valid entry of N.
+Valid entry of capital cities.
 
 ### Success End Condition
 
-The report is available. Correct input and functionality of the required report(s).
+The report is available. Correct input and functionality of the required report.
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the top N capital cities.
+The report is not produced, and we didn't get the requested information about the top N populated cities in a given region.
 
 ### Primary Actor
 
@@ -31,19 +32,18 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for all the top N capital cities in a country.
+A request for the capital cities' information is sent to the organisation the report is being made for.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests country population information.
-2. Employee requests the top N capital cities by population in the country.
-3. Employee extracts the top N capital cities.
-4. Employee provides the report to organisation.
+1. Employee requests population's information about all the capital cities in the world.
+2. Employee extracts current population's information of all the capital cities in the world.
+3. Employee provides the report to organisation.
 
 ## EXTENSIONS
 
 3. **Invalid continent.**:
-    1. Employee is informed that N is not valid.
+    1. Employee is informed that the report can't be produced.
 
 ## SUB-VARIATIONS
 

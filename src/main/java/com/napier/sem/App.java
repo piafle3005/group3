@@ -66,7 +66,65 @@ public class App
     /**
      * implement UseCase1
      */
-    public ArrayList<Country> getUseCase1(String continent)
+    public ArrayList<Country> getUseCase1()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.population "
+                            + "FROM country "
+                            + "ORDER BY country.population DESC";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country5 = new Country();
+                country5.name = rset.getString("name");
+                country5.population = rset.getInt("population");
+                country.add(country5);
+            }
+            return country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
+            return null;
+        }
+    }
+
+    public void printUseCase1(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No countries found.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-50s %-20s", "Name", "Population"));
+        // Loop over all countries in the list
+        for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null country found.");
+                continue;
+            }
+            String c1_string = String.format("%-50s %,-20d",
+                    c1.name, c1.population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * implement UseCase2
+     */
+    public ArrayList<Country> getUseCase2(String continent)
     {
         try
         {
@@ -104,28 +162,30 @@ public class App
         }
     }
 
-    public void printUseCase1(ArrayList<Country> country)
+    public void printUseCase2(ArrayList<Country> country)
     {
         if (country == null) {
             System.out.println("No countries found.");
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Continent", "Population"));
+        System.out.println(String.format("%-50s %-25s %-25s", "Name", "Continent", "Population"));
         // Loop over all countries in the list
         for (Country c1 : country) {
             if (c1 == null) {
                 System.out.println("Null country found.");
                 continue;
             }
-            String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+            String c1_string = String.format("%-50s %-25s %,-25d",
                     c1.name, c1.continent, c1.population);
             System.out.println(c1_string);
         }
     }
 
-    //Usecase 2
-    public ArrayList<Country> getUseCase2(String region)
+    /**
+     * implement UseCase3
+     */
+    public ArrayList<Country> getUseCase3(String region)
     {
         try
         {
@@ -164,7 +224,7 @@ public class App
     }
 
 
-    public void printUseCase2(ArrayList<Country> country)
+    public void printUseCase3(ArrayList<Country> country)
     {
         if (country == null) {
             System.out.println("No countries found.");
@@ -178,14 +238,16 @@ public class App
                 System.out.println("Null country found.");
                 continue;
             }
-            String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+            String c1_string = String.format("%-20s %-15s %,-12d",
                     c1.name, c1.region, c1.population);
             System.out.println(c1_string);
         }
     }
 
-    //Usecase3
-    public ArrayList<Country> getUseCase3(int limit)
+    /**
+     * implement UseCase4
+     */
+    public ArrayList<Country> getUseCase4(int limit)
     {
         try
         {
@@ -218,12 +280,12 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
+            System.out.println("Failed to get the top N populated countries in the world where N is provided by the user.");
             return null;
         }
     }
 
-    public void printUseCase3(ArrayList<Country> country) {
+    public void printUseCase4(ArrayList<Country> country) {
         if (country == null) {
             System.out.println("No countries found.");
             return;
@@ -242,8 +304,10 @@ public class App
         }
     }
 
-    //Usecase 4
-    public ArrayList<Country> getUseCase4(String continent, int limit)
+    /**
+     * implement UseCase5
+     */
+    public ArrayList<Country> getUseCase5(String continent, int limit)
     {
         try
         {
@@ -278,70 +342,18 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a continent organised by largest population to smallest.");
+            System.out.println("Failed to get the top N populated countries in a continent where N is provided by the user.");
             return null;
         }
     }
 
-    //Usecase4 can take the same print methode from usecase1 because it is the same request
+    //Usecase5 can take the same print methode from usecase1 because it is the same request
 
-    //Usecase 5
-    public ArrayList<Country> getUseCase5()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
 
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.name, country.population "
-                            + "FROM country "
-                            + "ORDER BY country.population DESC";
 
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Return new country if valid.
-            // Check one is returned
-            ArrayList<Country> country = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country country5 = new Country();
-                country5.name = rset.getString("name");
-                country5.population = rset.getInt("population");
-                country.add(country5);
-            }
-            return country;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in the world organised by largest population to smallest");
-            return null;
-        }
-    }
-
-    public void printUseCase5(ArrayList<Country> country) {
-        if (country == null) {
-            System.out.println("No countries found.");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-20s %-12s", "Name", "Population"));
-        // Loop over all countries in the list
-        for (Country c1 : country) {
-            if (c1 == null) {
-                System.out.println("Null country found.");
-                continue;
-            }
-            String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
-                    c1.name, c1.population);
-            System.out.println(c1_string);
-        }
-    }
-
-    //Usecase 6
+    /**
+     * implement UseCase6
+     */
     public ArrayList<Country> getUseCase6(String region, int limit)
     {
         try
@@ -377,14 +389,16 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the countries in a region organised by largest population to smallest");
+            System.out.println("Failed to get the top N populated countries in a region where N is provided by the user.");
             return null;
         }
     }
 
-    //UseCase6 use the print method from useCase2
+    //UseCase6 use the print method from useCase3
 
-    //Usecase7
+    /**
+     * implement UseCase7
+     */
     public ArrayList<City> getUseCase7()
     {
         try
@@ -434,13 +448,15 @@ public class App
                 System.out.println("Null city found.");
                 continue;
             }
-            String c1_string = String.format("%-20s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+            String c1_string = String.format("%-20s %,-12d",
                     c1.name, c1.population);
             System.out.println(c1_string);
         }
     }
 
-    //Usecase8
+    /**
+     * implement UseCase8
+     */
     public ArrayList<City> getUseCase8(String continent)
     {
         try
@@ -493,14 +509,78 @@ public class App
                 System.out.println("Null city found.");
                 continue;
             }
-            String c1_string = String.format("%-20s %-15s %,-12d", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+            String c1_string = String.format("%-20s %-15s %,-12d",
                     c1.name, c1.continent, c1.population);
             System.out.println(c1_string);
         }
     }
 
-    //UseCase9
-    public ArrayList<City> getUseCase9(String country)
+
+    /**
+     * implement UseCase9
+     */
+    public ArrayList<City> getUseCase9(String region)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, country.region, city.population "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.region = '" + region + "' "
+                            + "ORDER BY city.population DESC";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<City> city = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city2 = new City();
+                city2.name = rset.getString("name");
+                city2.region = rset.getString("region");
+                city2.population = rset.getInt("population");
+                city.add(city2);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the cities in a region organised by largest population to smallest");
+            return null;
+        }
+    }
+
+    public void printUseCase9(ArrayList<City> city) {
+        if (city == null) {
+            System.out.println("No cities found.");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-50s %-25s %-25s", "Name", "Region", "Population"));
+        // Loop over all countries in the list
+        for (City c1 : city) {
+            if (c1 == null) {
+                System.out.println("Null city found.");
+                continue;
+            }
+            String c1_string = String.format("%-50s %-25s %,-25d",
+                    c1.name, c1.region, c1.population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * implement UseCase10
+     */
+    public ArrayList<City> getUseCase10(String country)
     {
         try
         {
@@ -534,12 +614,12 @@ public class App
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the top N populated cities in a country, where N is provided by the user");
+            System.out.println("Failed to get all the cities in a country organised by largest population to smallest.");
             return null;
         }
-    } // Get useCase9
+    } // Get useCase10
 
-    public void printUseCase9(ArrayList<City> city)
+    public void printUseCase10(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -558,10 +638,12 @@ public class App
             String c9_string = String.format("%-20s %-15s %-12s", c9.name, c9.population, c9.country);
             System.out.println(c9_string);
         }
-    } // print useCase9
+    } // print useCase10
 
-    //UseCase10
-    public ArrayList<City> getUseCase10(String district)
+    /**
+     * implement UseCase11
+     */
+    public ArrayList<City> getUseCase11(String district)
     {
         try
         {
@@ -593,9 +675,9 @@ public class App
             System.out.println("Failed to get all the cities in a district organised by largest population to smallest");
             return null;
         }
-    } // getUseCase10
+    } // getUseCase11
 
-    public void printUseCase10(ArrayList<City> city)
+    public void printUseCase11(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -614,10 +696,12 @@ public class App
             String c10_string = String.format("%-20s %-15s %-12s", c10.name, c10.district, c10.population);
             System.out.println(c10_string);
         }
-    } // print use case 10
+    } // print use case11
 
-    //UseCase11
-    public ArrayList<City> getUseCase11(int limit)
+    /**
+     * implement UseCase12
+     */
+    public ArrayList<City> getUseCase12(int limit)
     {
         try
         {
@@ -627,7 +711,8 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.name, city.population "
-                            + "FROM city " ;
+                            + "FROM city "
+                            + "ORDER BY city.population DESC";
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -648,9 +733,9 @@ public class App
             System.out.println("Failed to get all the top N populated cities in the world, where N is provided by the user");
             return null;
         }
-    } // getUseCase11
+    } // getUseCase12
 
-    public void printUseCase11(ArrayList<City> city)
+    public void printUseCase12(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -669,10 +754,12 @@ public class App
             String c11_string = String.format("%-20s %-12d", c11.name, c11.population);
             System.out.println(c11_string);
         }
-    } // print use case 11
+    } // print use case 12
 
-    //UseCase12
-    public ArrayList<City> getUseCase12(int limit, String continent)
+    /**
+     * implement UseCase13
+     */
+    public ArrayList<City> getUseCase13(int limit, String continent)
     {
         try
         {
@@ -684,7 +771,8 @@ public class App
                     "SELECT city.name, city.population, country.continent "
                             + "FROM city, country "
                             + "WHERE city.countrycode = country.code "
-                            + "AND country.continent = '" + continent + "' ";
+                            + "AND country.continent = '" + continent + "' "
+                            + "ORDER BY city.population DESC";
 
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -707,9 +795,9 @@ public class App
             System.out.println("Failed to get all the top N populated cities in a continent, where N is provided by the user");
             return null;
         }
-    } // Get use case 12
+    } // Get use case 13
 
-    public void printUseCase12(ArrayList<City> city)
+    public void printUseCase13(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -728,10 +816,12 @@ public class App
             String c12_string = String.format("%-20s %-15s %-12s", c12.name, c12.population, c12.continent);
             System.out.println(c12_string);
         }
-    } // print use case 12
+    } // print use case 13
 
-    //UseCase13
-    public ArrayList<City> getUseCase13(int limit, String region)
+    /**
+     * implement UseCase14
+     */
+    public ArrayList<City> getUseCase14(int limit, String region)
     {
         try
         {
@@ -743,7 +833,8 @@ public class App
                     "SELECT city.name, city.population, country.region "
                             + "FROM city, country "
                             + "WHERE city.countrycode = country.code "
-                            + "AND country.region = '" + region + "' ";
+                            + "AND country.region = '" + region + "' "
+                            + "ORDER BY city.population DESC";
 
             // Execute the SQL Statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -766,9 +857,9 @@ public class App
             System.out.println("Failed to get all the top N populated cities in a region, where N is provided by the user");
             return null;
         }
-    } //Get use case 13
+    } //Get use case 14
 
-    public void printUseCase13(ArrayList<City> city)
+    public void printUseCase14(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -787,10 +878,12 @@ public class App
             String c13_string = String.format("%-20s %-15s %-12s", c13.name, c13.population, c13.region);
             System.out.println(c13_string);
         }
-    } // Print use case 13
+    } // Print use case 14
 
-    //UseCase14
-    public ArrayList<City> getUseCase14 (int limit, String country)
+    /**
+     * UseCase15
+     */
+    public ArrayList<City> getUseCase15 (int limit, String country)
     {
         try
         {
@@ -824,9 +917,9 @@ public class App
             System.out.println("Failed to get all the top N populated cities in a country, where N is provided by the user");
             return null;
         }
-    } // Get use case 14
+    } // Get use case 15
 
-    public void printUseCase14(ArrayList<City> city)
+    public void printUseCase15(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -845,10 +938,12 @@ public class App
             String c14_string = String.format("%-20s %-15s %-12s", c14.name, c14.population, c14.country);
             System.out.println(c14_string);
         }
-    } // print use case 14
+    } // print use case 15
 
-    //UseCase15
-    public ArrayList<City> getUseCase15(int limit, String district)
+    /**
+     * UseCase16
+     */
+    public ArrayList<City> getUseCase16(int limit, String district)
     {
         try
         {
@@ -881,9 +976,9 @@ public class App
             System.out.println("Failed to get all the top N populated cities in a district, where N is provided by the user");
             return null;
         }
-    } // Get use case15
+    } // Get use case16
 
-    public void printUseCase15(ArrayList<City> city)
+    public void printUseCase16(ArrayList<City> city)
     {
         if (city == null)
         {
@@ -902,10 +997,12 @@ public class App
             String c15_string = String.format("%-20s %-15s %-12s", c15.name, c15.population, c15.district);
             System.out.println(c15_string);
         }
-    } //Print use case 15
+    } //Print use case 16
 
-    //UseCase16
-    public ArrayList<Country> getUseCase16()
+    /**
+     * implement UseCase17
+     */
+    public ArrayList<Country> getUseCase17()
     {
         try
         {
@@ -937,9 +1034,9 @@ public class App
             System.out.println("Failed to get all the capital cities in the world, organised by largest population to smallest");
             return null;
         }
-    } //Get use case 16
+    } //Get use case 17
 
-    public void printUseCase16(ArrayList<Country> capital)
+    public void printUseCase17(ArrayList<Country> capital)
     {
         if (capital == null)
         {
@@ -958,130 +1055,12 @@ public class App
             String c16_string = String.format("%-20s %-15s", c16.name, c16.population);
             System.out.println(c16_string);
         }
-    } //Print use case 16
-
-    //useCase17
-    public ArrayList<City> getUseCase17(int limit, String country)
-    {
-        try
-        {
-            // Create the SQL Statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.name, city.population, country.name AS country_name "
-                            + "FROM city, country "
-                            + "WHERE city.countrycode = country.code "
-                            + "AND country.capital = city.ID "
-                            + "AND country.name ='" + country +  "' "
-                            + "ORDER BY city.population DESC";
-
-            // Execute the SQL Statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            ArrayList<City> capital17 = new ArrayList<>();
-            int count = 0;
-            while (rset.next() && count < limit)
-            {
-                City capital = new City();
-                capital.name = rset.getString("name");
-                capital.population = rset.getInt("population");
-                capital.country = rset.getString("country_name");
-                count++;
-                capital17.add(capital);
-            }
-            return capital17;
-        } catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in a country, organised by largest population to smallest");
-            return null;
-        }
-    } //get use case 17
-
-    public void printUseCase17(ArrayList<City> capital)
-    {
-        if (capital == null)
-        {
-            System.out.println("No capitals found.\n");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "country"));
-        // Loop over all cities in the list
-        for (City c17 : capital)
-        {
-            if (c17 == null) {
-                System.out.println("Null capital found.");
-                continue;
-            }
-            String c17_string = String.format("%-20s %-15s %-12s", c17.name, c17.population, c17.country);
-            System.out.println(c17_string);
-        }
     } //Print use case 17
 
-    //useCase18
-    public ArrayList<Country> getUseCase18(String region)
-    {
-        try
-        {
-            // Create the SQL Statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.name, city.population, country.region "
-                            + "FROM city, country "
-                            + "WHERE city.countrycode = country.code "
-                            + "AND country.capital = city.ID "
-                            + "AND country.region ='" + region +  "' "
-                            + "ORDER BY city.population DESC";
-
-            // Execute the SQL Statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            ArrayList<Country> capital8 = new ArrayList<>();
-            while (rset.next())
-            {
-                Country capital = new Country();
-                capital.name = rset.getString("name");
-                capital.population = rset.getInt("population");
-                capital.region = rset.getString("region");
-                capital8.add(capital);
-            }
-            return capital8;
-        } catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in a region, organised by largest population to smallest");
-            return null;
-        }
-    } //get use case 18
-
-    public void printUseCase18(ArrayList<Country> capital)
-    {
-        if (capital == null)
-        {
-            System.out.println("No capitals found.\n");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Region"));
-        // Loop over all cities in the list
-        for (Country c18 : capital)
-        {
-            if (c18 == null) {
-                System.out.println("Null city found.");
-                continue;
-            }
-            String c18_string = String.format("%-20s %-15s %-12s", c18.name, c18.population, c18.region);
-            System.out.println(c18_string);
-        }
-    } //Print use case 18
-
-    //useCase19
-    public ArrayList<Country> getUseCase19(String continent)
+    /**
+     * implement UseCase18
+     */
+    public ArrayList<Country> getUseCase18(String continent)
     {
         try
         {
@@ -1116,9 +1095,9 @@ public class App
             System.out.println("Failed to get all the capital cities in a continent, organised by largest population to smallest");
             return null;
         }
-    } //get use case 19
+    } //get use case 18
 
-    public void printUseCase19(ArrayList<Country> capital)
+    public void printUseCase18(ArrayList<Country> capital)
     {
         if (capital == null)
         {
@@ -1137,9 +1116,72 @@ public class App
             String c19_string = String.format("%-20s %-15s %-12s", c19.name, c19.population, c19.continent);
             System.out.println(c19_string);
         }
+    } //Print use case 18
+
+    /**
+     * UseCase19
+     */
+    public ArrayList<Country> getUseCase19(String region)
+    {
+        try
+        {
+            // Create the SQL Statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.population, country.region "
+                            + "FROM city, country "
+                            + "WHERE city.countrycode = country.code "
+                            + "AND country.capital = city.ID "
+                            + "AND country.region ='" + region +  "' "
+                            + "ORDER BY city.population DESC";
+
+            // Execute the SQL Statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> capital8 = new ArrayList<>();
+            while (rset.next())
+            {
+                Country capital = new Country();
+                capital.name = rset.getString("name");
+                capital.population = rset.getInt("population");
+                capital.region = rset.getString("region");
+                capital8.add(capital);
+            }
+            return capital8;
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get all the capital cities in a region, organised by largest population to smallest");
+            return null;
+        }
+    } //get use case 19
+
+    public void printUseCase19(ArrayList<Country> capital)
+    {
+        if (capital == null)
+        {
+            System.out.println("No capitals found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-15s %-12s", "Name", "Population", "Region"));
+        // Loop over all cities in the list
+        for (Country c18 : capital)
+        {
+            if (c18 == null) {
+                System.out.println("Null city found.");
+                continue;
+            }
+            String c18_string = String.format("%-20s %-15s %-12s", c18.name, c18.population, c18.region);
+            System.out.println(c18_string);
+        }
     } //Print use case 19
 
-    //useCase20
+    /**
+     * implement UseCase20
+     */
     public ArrayList<Country> getUseCase20(int limit)
     {
         try
@@ -1171,7 +1213,7 @@ public class App
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in the world, organised by largest population to smallest");
+            System.out.println("Failed to get the top N populated capital cities in the world where N is provided by the user.");
             return null;
         }
     } //Get use case 20
@@ -1197,7 +1239,9 @@ public class App
         }
     } //Print use case 20
 
-    //useCase21
+    /**
+     * implement UseCase21
+     */
     public ArrayList<Country> getUseCase21(int limit, String continent)
     {
         try
@@ -1232,7 +1276,7 @@ public class App
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in a continent, organised by largest population to smallest");
+            System.out.println("Failed to get the top N populated capital cities in a continent where N is provided by the user.");
             return null;
         }
     } //get use case 21
@@ -1258,7 +1302,9 @@ public class App
         }
     } //Print use case 21
 
-    //useCase22
+    /**
+     * implement UseCase22
+     */
     public ArrayList<Country> getUseCase22(int limit, String region)
     {
         try
@@ -1293,7 +1339,7 @@ public class App
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get all the capital cities in a region, organised by largest population to smallest");
+            System.out.println("Failed to get the top N populated capital cities in a region where N is provided by the user.");
             return null;
         }
     } //get use case 22
@@ -1319,7 +1365,67 @@ public class App
         }
     } //Print use case 22
 
+    /**
+     * implement UseCase23
+     */
     public ArrayList<Population> getUseCase23() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement to get total population of countries in each continent
+            String strSelect =
+                    "SELECT country.continent, SUM(country.population) AS total_population, SUM(country.population) - SUM(city.population) AS total_population_nc, SUM(city.population) AS total_population_c "
+                            + "FROM country, city "
+                            + "WHERE city.countryCode = country.code "
+                            + "GROUP BY country.continent";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            ArrayList<Population> population = new ArrayList<>();
+
+            // Get total population for each continent
+            while (rset.next()) {
+                Population data = new Population();
+                data.continent = rset.getString("continent");
+                data.population = rset.getLong("total_population");
+                data.population_nc = rset.getLong("total_population_nc");
+                data.population_c = rset.getLong("total_population_c");
+                population.add(data);
+            }
+            return population;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each continent.");
+            return null;
+        }
+    }
+
+    public void printUseCase23(ArrayList<Population> population) {
+        if (population == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+
+        // Print header
+        System.out.println(String.format("%-30s %-15s %-22s %s",
+                "Continent", "Population", "Population not in Cities", "Population in Cities"));
+        // Loop over all population data in the list
+        for (Population data : population) {
+            if (data == null) {
+                System.out.println("Null population data found.");
+                continue;
+            }
+            System.out.printf("%-30s %-15d %-22d %d%n", data.continent, data.population, data.population_nc, data.population_c);
+        }
+    }
+
+    /**
+     * implement UseCase24
+     */
+    public ArrayList<Population> getUseCase24() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1349,12 +1455,12 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the total population, population in cities, population not in cities, for all regions.");
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each region.");
             return null;
         }
     }
 
-    public void printUseCase23(ArrayList<Population> population) {
+    public void printUseCase24(ArrayList<Population> population) {
         if (population == null) {
             System.out.println("No population data found.\n");
             return;
@@ -1373,8 +1479,10 @@ public class App
         }
     }
 
-    //UseCase24
-    public ArrayList<Population> getUseCase24() {
+    /**
+     * implement UseCase25
+     */
+    public ArrayList<Population> getUseCase25() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1404,64 +1512,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the total population, population in cities, population not in cities, for all countries.\"");
-            return null;
-        }
-    }
-
-    public void printUseCase24(ArrayList<Population> population) {
-        if (population == null) {
-            System.out.println("No population data found.\n");
-            return;
-        }
-
-        // Print header
-        System.out.println(String.format("%-30s %-15s %-22s %s",
-                "Country", "Population",  "Population not in Cities", "Population in Cities"));
-        System.out.println("--------------------------------------------------------------------------------");
-
-        // Loop over all population data in the list
-        for (Population data : population) {
-            if (data == null) {
-                System.out.println("Null population data found.");
-                continue;
-            }
-            System.out.printf("%-30s %-15d %-22d %d%n", data.name, data.population, data.population_nc, data.population_c);
-        }
-    }
-
-
-    public ArrayList<Population> getUseCase25() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement to get total population of countries in each continent
-            String strSelect =
-                    "SELECT country.continent, SUM(country.population) AS total_population, SUM(country.population) - SUM(city.population) AS total_population_nc, SUM(city.population) AS total_population_c "
-                    + "FROM country, city "
-                    + "WHERE city.countryCode = country.code "
-                    + "GROUP BY country.continent";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            ArrayList<Population> population = new ArrayList<>();
-
-            // Get total population for each continent
-            while (rset.next()) {
-                Population data = new Population();
-                data.continent = rset.getString("continent");
-                data.population = rset.getLong("total_population");
-                data.population_nc = rset.getLong("total_population_nc");
-                data.population_c = rset.getLong("total_population_c");
-                population.add(data);
-            }
-            return population;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the total population, population in cities, population not in cities, for all continents.");
+            System.out.println("Failed to get the population of people, people living in cities, and people not living in cities in each country.");
             return null;
         }
     }
@@ -1474,8 +1525,7 @@ public class App
 
         // Print header
         System.out.println(String.format("%-30s %-15s %-22s %s",
-                "Continent", "Population", "Population not in Cities", "Population in Cities"));
-        //System.out.println("--------------------------------------------------------------------------------");
+                "Country", "Population",  "Population not in Cities", "Population in Cities"));
 
         // Loop over all population data in the list
         for (Population data : population) {
@@ -1483,11 +1533,13 @@ public class App
                 System.out.println("Null population data found.");
                 continue;
             }
-            System.out.printf("%-30s %-15d %-22d %d%n", data.continent, data.population, data.population_nc, data.population_c);
+            System.out.printf("%-30s %-15d %-22d %d%n", data.name, data.population, data.population_nc, data.population_c);
         }
     }
 
-    //useCase26
+    /**
+     * implement UseCase26
+     */
     public ArrayList<Country> getUseCase26()
     {
         try
@@ -1537,182 +1589,318 @@ public class App
                 System.out.println("Null population data found.");
                 continue;
             }
-            String c1_string = String.format("%-20s", // Verwenden Sie , zur Formatierung der Population mit Tausender-Trennzeichen
+            String c1_string = String.format("%-20s",
                     c1.total_population);
             System.out.println(c1_string);
         }
     }
 
-    //Usecase27
-    public long getUseCase27(String continent) {
-        try {
+    /**
+     * implement UseCase27
+     */
+    public ArrayList<Country> getUseCase27(String continent)
+    {
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT SUM(country.population) AS total_population " +
+                    "SELECT country.continent, SUM(country.population) AS total_population " +
                             "FROM country " +
-                            "WHERE country.continent = '" + continent + "'";
+                            "WHERE country.continent ='" + continent +  "' " +
+                            "GROUP BY country.continent";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Check if a result is returned
-            if (rset.next()) {
-                return rset.getLong("total_population");
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country27 = new ArrayList<Country>();
+
+            while (rset.next())
+            {
+                Country c27 = new Country();
+                c27.continent = rset.getString("continent");
+                c27.total_population = rset.getLong("total_population");
+                country27.add(c27);
+
             }
-        } catch (Exception e) {
+            return country27;
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of " + continent);
-        }
-        return -1; // Return -1 if data cannot be retrieved
-    }
-
-    // Method to print the population of a specific continent
-    public void printUseCase27(String continent, long continentPopulation) {
-        if (continentPopulation == -1) {
-            System.out.println("Failed to retrieve the population of " + continent);
-        } else {
-            System.out.println("Population of " + continent + ": " + continentPopulation);
+            System.out.println("Failed to get the data of the population of a continent.");
+            return null;
         }
     }
 
-    //Usecase28
-    public long getUseCase28(String region) {
-        try {
+
+    public void printUseCase27(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-20s", "Continent", "Population of the continent"));
+        // Loop over all countries in the list
+        for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null population data found.");
+                continue;
+            }
+            String c1_string = String.format("%-20s %-20s",
+                    c1.continent, c1.total_population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * implement UseCse28
+     */
+    public ArrayList<Country> getUseCase28(String region)
+    {
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT SUM(population) AS total_population " +
+                    "SELECT country.region, SUM(country.population) AS total_population " +
                             "FROM country " +
-                            "WHERE region = '" + region + "'";
+                            "WHERE country.region ='" + region +  "' " +
+                            "GROUP BY country.region";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Check if a result is returned
-            if (rset.next()) {
-                return rset.getLong("total_population");
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country27 = new ArrayList<Country>();
+
+            while (rset.next())
+            {
+                Country c27 = new Country();
+                c27.region = rset.getString("region");
+                c27.total_population = rset.getLong("total_population");
+                country27.add(c27);
+
             }
-        } catch (Exception e) {
+            return country27;
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of " + region);
-        }
-        return -1; // Getting population data has failed
-    }
-
-    // Print region population data
-    public void printUseCase28(String region, long regionPop) {
-        if (regionPop == -1) {
-            System.out.println("Failed to retrieve the population of " + region);
-        } else {
-            System.out.println("Population of " + region + ": " + regionPop);
+            System.out.println("Failed to get the data of the population of a region.");
+            return null;
         }
     }
 
-    //UseCase29
-    public long getUseCase29(String district) {
-        try {
+
+    public void printUseCase28(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-20s", "Region", "Population of the region"));
+        // Loop over all countries in the list
+        for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null population data found.");
+                continue;
+            }
+            String c1_string = String.format("%-20s %-20s",
+                    c1.region, c1.total_population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * implement UseCase29
+     */
+    public ArrayList<Country> getUseCase29(String country)
+    {
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT SUM(population) AS total_population " +
+                    "SELECT country.name, SUM(country.population) AS total_population " +
+                            "FROM country " +
+                            "WHERE country.name ='" + country +  "' " +
+                            "GROUP BY country.name";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<Country> country27 = new ArrayList<Country>();
+
+            while (rset.next())
+            {
+                Country c27 = new Country();
+                c27.name = rset.getString("name");
+                c27.total_population = rset.getLong("total_population");
+                country27.add(c27);
+
+            }
+            return country27;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the data the population of a country.");
+            return null;
+        }
+    }
+
+
+    public void printUseCase29(ArrayList<Country> country) {
+        if (country == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-20s", "Country", "Population of the country"));
+        // Loop over all countries in the list
+        for (Country c1 : country) {
+            if (c1 == null) {
+                System.out.println("Null population data found.");
+                continue;
+            }
+            String c1_string = String.format("%-20s %-20s",
+                    c1.name, c1.total_population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * implement UseCase30
+     */
+    public ArrayList<City> getUseCase30(String district)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.district, SUM(city.population) AS total_population " +
                             "FROM city " +
-                            "WHERE district = '" + district + "'";
+                            "WHERE city.district ='" + district +  "' " +
+                            "GROUP BY city.district";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Check if a result is returned
-            if (rset.next()) {
-                return rset.getLong("total_population");
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<City> city29 = new ArrayList<City>();
+
+            while (rset.next())
+            {
+                City c29 = new City();
+                c29.district = rset.getString("district");
+                c29.total_population = rset.getLong("total_population");
+                city29.add(c29);
+
             }
-        } catch (Exception e) {
+            return city29;
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of district " + district);
-        }
-        return -1; // Getting population data has failed
-    }
-
-    // Print district population data
-    public void printUseCase29(String district, long districtPop) {
-        if (districtPop == -1) {
-            System.out.println("Failed to retrieve the population of " + district);
-        } else {
-            System.out.println("Population of " + district + ": " + districtPop);
+            System.out.println("Failed to get the data of the population of a district.");
+            return null;
         }
     }
 
-    //UseCase30
-    public long getUseCase30(String country) {
-        try {
+
+    public void printUseCase30(ArrayList<City> city) {
+        if (city == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-20s", "District", "Population of the district"));
+        // Loop over all countries in the list
+        for (City c1 : city) {
+            if (c1 == null) {
+                System.out.println("Null population data found.");
+                continue;
+            }
+            String c1_string = String.format("%-20s %-20s",
+                    c1.district, c1.total_population);
+            System.out.println(c1_string);
+        }
+    }
+
+    /**
+     * UseCase31
+     */
+    public ArrayList<City> getUseCase31(String city)
+    {
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT population " +
-                            "FROM country " +
-                            "WHERE name = '" + country + "'";
+                    "SELECT city.name, city.population " +
+                            "FROM city " +
+                            "WHERE city.name ='" + city +  "' ";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Check if a result is returned
-            if (rset.next()) {
-                return rset.getLong("population");
+            // Return new country if valid.
+            // Check one is returned
+            ArrayList<City> city29 = new ArrayList<City>();
+
+            while (rset.next())
+            {
+                City c29 = new City();
+                c29.name = rset.getString("name");
+                c29.population = rset.getInt("population");
+                city29.add(c29);
+
             }
-        } catch (Exception e) {
+            return city29;
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of country " + country);
-        }
-        return -1; // Getting population data has failed
-    }
-
-    // Method to print the population data of a given country
-    public void printUseCase30(String country, long population) {
-        if (population == -1) {
-            System.out.println("Failed to retrieve the population of " + country);
-        } else {
-            System.out.println("Population of " + country + ": " + population);
+            System.out.println("Failed to get the data of the population of a city.");
+            return null;
         }
     }
 
-    //UseCase31
-    public long getUseCase31(String city) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
 
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT population FROM city WHERE name = '" + city + "'";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Check if a result is returned
-            if (rset.next()) {
-                return rset.getLong("population");
+    public void printUseCase31(ArrayList<City> city) {
+        if (city == null) {
+            System.out.println("No population data found.\n");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-20s %-20s", "City", "Population of the city"));
+        // Loop over all countries in the list
+        for (City c1 : city) {
+            if (c1 == null) {
+                System.out.println("Null population data found.");
+                continue;
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of city " + city);
-        }
-        return -1; // Getting population data has failed
-    }
-
-    // Method to print the population of a city
-    public void printCityPopulation(String cityName, long cityPopulation) {
-        if (cityPopulation == -1) {
-            System.out.println("Failed to retrieve the population of " + cityName);
-        } else {
-            System.out.println("Population of " + cityName + ": " + cityPopulation);
+            String c1_string = String.format("%-20s %-20s",
+                    c1.name, c1.population);
+            System.out.println(c1_string);
         }
     }
 
@@ -1727,79 +1915,79 @@ public class App
         }
 
         //print UseCase1
-        ArrayList<Country> country = a.getUseCase1("Africa");
-        a.printUseCase1(country);
+        ArrayList<Country> country1 = a.getUseCase1();
+        a.printUseCase1(country1);
 
         //print UseCase2
-        ArrayList<Country> country2 = a.getUseCase2("Middle East");
+        ArrayList<Country> country2 = a.getUseCase2("Africa");
         a.printUseCase2(country2);
 
         //print UseCase3
-        ArrayList<Country> country3 = a.getUseCase3(16);
+        ArrayList<Country> country3 = a.getUseCase3("Middle East");
         a.printUseCase3(country3);
 
         //print UseCase4
-        ArrayList<Country> country4 = a.getUseCase4("Europe", 3);
-        a.printUseCase1(country4);
+        ArrayList<Country> country4 = a.getUseCase4(5);
+        a.printUseCase4(country4);
 
         //print UseCase5
-        ArrayList<Country> country5 = a.getUseCase5();
-        a.printUseCase5(country5);
+        ArrayList<Country> country5 = a.getUseCase5("Europe", 3);
+        a.printUseCase2(country5);
 
         //print UseCase6
         ArrayList<Country> country6 = a.getUseCase6("Middle East", 9);
-        a.printUseCase2(country6);
+        a.printUseCase3(country6);
 
         //print UseCase7
-        ArrayList<City> city = a.getUseCase7();
-        a.printUseCase7(city);
+        ArrayList<City> city7 = a.getUseCase7();
+        a.printUseCase7(city7);
 
         //print UseCase8
-        ArrayList<City> city2 = a.getUseCase8("Europe");
-        a.printUseCase8(city2);
+        ArrayList<City> city8 = a.getUseCase8("Europe");
+        a.printUseCase8(city8);
 
         //print UseCase9
-        ArrayList<City> capital9 = a.getUseCase9("Germany");
-        a.printUseCase9(capital9);
+        ArrayList<City> city9 = a.getUseCase9("Western Europe");
+        a.printUseCase9(city9);
 
         //print UseCase10
-        ArrayList<City> city10 = a.getUseCase10("São Paulo");
+        ArrayList<City> city10 = a.getUseCase10("Germany");
         a.printUseCase10(city10);
 
         //print UseCase11
-        ArrayList<City> city11 = a.getUseCase11(3);
+        ArrayList<City> city11 = a.getUseCase11("São Paulo");
         a.printUseCase11(city11);
 
         //print UseCase12
-        ArrayList<City> city12 = a.getUseCase12(3, "Europe");
+        ArrayList<City> city12 = a.getUseCase12(5);
         a.printUseCase12(city12);
 
         //print UseCase13
-        ArrayList<City> city13 = a.getUseCase13(3, "Western Europe");
+        ArrayList<City> city13 = a.getUseCase13(3, "Europe");
         a.printUseCase13(city13);
 
         //print UseCase14
-        ArrayList<City> city14 = a.getUseCase14(3, "Germany");
+        ArrayList<City> city14 = a.getUseCase14(3, "Western Europe");
         a.printUseCase14(city14);
 
         //print UseCase15
-        ArrayList<City> city15 = a.getUseCase15(2, "Mendoza");
+        ArrayList<City> city15 = a.getUseCase15(3, "Germany");
         a.printUseCase15(city15);
 
         //print UseCase16
-        ArrayList<Country> capital16 = a.getUseCase16();
-        a.printUseCase16(capital16);
+        ArrayList<City> city16 = a.getUseCase16(2, "Mendoza");
+        a.printUseCase16(city16);
 
         //print UseCase17
-        ArrayList<City> capital17 = a.getUseCase17(8,"Germany");
+        ArrayList<Country> capital17 = a.getUseCase17();
         a.printUseCase17(capital17);
 
         //print UseCase18
-        ArrayList<Country> capital18 = a.getUseCase18("Southern Europe");
+        ArrayList<Country> capital18 = a.getUseCase18("Europe");
         a.printUseCase18(capital18);
 
         //print UseCase19
-        ArrayList<Country> capital19 = a.getUseCase19("Europe");
+        ArrayList<Country> capital19 = a.getUseCase19("Southern Europe");
         a.printUseCase19(capital19);
 
         //print UseCase20
@@ -1823,12 +2011,32 @@ public class App
         a.printUseCase24(p24);
 
         //print UseCase25
-        ArrayList<Population> p1 = a.getUseCase25();
-        a.printUseCase25(p1);
+        ArrayList<Population> p25 = a.getUseCase25();
+        a.printUseCase25(p25);
 
         //print UseCase26
         ArrayList<Country> p26 = a.getUseCase26();
         a.printUseCase26(p26);
+
+        //print UseCase27
+        ArrayList<Country> p27 = a.getUseCase27("Europe");
+        a.printUseCase27(p27);
+
+        //print UseCase28
+        ArrayList<Country> p28 = a.getUseCase28("Middle East");
+        a.printUseCase28(p28);
+
+        //print UseCase29
+        ArrayList<Country> p29 = a.getUseCase29("Germany");
+        a.printUseCase29(p29);
+
+        //print UseCase30
+        ArrayList<City> city30 = a.getUseCase30("Florida");
+        a.printUseCase30(city30);
+
+        //print UseCase31
+        ArrayList<City> city31 = a.getUseCase31("Edinburgh");
+        a.printUseCase31(city31);
 
         // Disconnect from database
         a.disconnect();

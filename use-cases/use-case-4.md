@@ -1,10 +1,10 @@
-# USE CASE: 4 Report of the top N populated countries in a continent where N is provided by the user.
+# USE CASE: 4 Report of the top N populated countries in the world where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information I want to create a report of the top N populated countries in a continent where N is provided by the user.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of the top N populated countries in the world where N is provided by the user.
 
 ### Scope
 
@@ -36,7 +36,7 @@ A request for countries information is sent to the organisation the report is be
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee request country information for the top N countries in a continent.
+1. Employee request country information for the top N countries in the world.
 2. Employee request the population to get country information for the populated countries.
 3. Employee extracts current population information.
 4. Employee provides the report to organisation.

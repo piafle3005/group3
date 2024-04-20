@@ -31,52 +31,37 @@ public class AppIntegrationTest
     @Test
     void printUseCase1TestNull()
     {
-        /**
-         *Test what the database does if the given data is null
-         */
         app.printUseCase1(null);
-        app.getUseCase1(null);
+        app.getUseCase1();
     }
 
     @Test
     void printUseCase1TestEmpty()
     {
-        /**
-         *Test what the database does if the given data is empty
-         */
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase1(countries);
-        app.getUseCase1(" ");
+        app.getUseCase1();
     }
 
     @Test
     void printUseCase1TestContainsNull()
     {
-        /**
-         *Test what the database does if the given data contains null
-         */
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase1(countries);
-        app.getUseCase1(" ");
     }
 
     @Test
     void printUseCase1TestValidData()
     {
-        /**
-         *Test what the database does under normal condition
-         */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";
-        c1.continent = "Europe";
         c1.population= 83200000;
         countries.add(c1);
         app.printUseCase1(countries);
-        app.getUseCase1("Europe");
+        app.getUseCase1();
         assertEquals(c1.name, "Germany");
-        assertEquals(c1.continent, "Europe");
         assertEquals(c1.population, 83200000);
     }
 
@@ -125,14 +110,14 @@ public class AppIntegrationTest
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";
-        c1.region = "Western Europe";
-        c1.population= 82164700;
+        c1.continent = "Europe";
+        c1.population= 83200000;
         countries.add(c1);
         app.printUseCase2(countries);
-        app.getUseCase2("Western Europe");
+        app.getUseCase2("Europe");
         assertEquals(c1.name, "Germany");
-        assertEquals(c1.region, "Western Europe");
-        assertEquals(c1.population, 82164700);
+        assertEquals(c1.continent, "Europe");
+        assertEquals(c1.population, 83200000);
     }
 
     /**
@@ -141,37 +126,52 @@ public class AppIntegrationTest
     @Test
     void printUseCase3TestNull()
     {
+        /**
+         *Test what the database does if the given data is null
+         */
         app.printUseCase3(null);
-        app.getUseCase3(0);
+        app.getUseCase3(null);
     }
 
     @Test
     void printUseCase3TestEmpty()
     {
+        /**
+         *Test what the database does if the given data is empty
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printUseCase3(countries);
-        app.getUseCase3(8);
+        app.getUseCase3(" ");
     }
 
     @Test
     void printUseCase3TestContainsNull()
     {
+        /**
+         *Test what the database does if the given data contains null
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
         app.printUseCase3(countries);
+        app.getUseCase3(" ");
     }
 
     @Test
     void printUseCase3TestValidData()
     {
+        /**
+         *Test what the database does under normal condition
+         */
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";
-        c1.population = 82164700;
+        c1.region = "Western Europe";
+        c1.population= 82164700;
         countries.add(c1);
         app.printUseCase3(countries);
-        app.getUseCase3(3);
+        app.getUseCase3("Western Europe");
         assertEquals(c1.name, "Germany");
+        assertEquals(c1.region, "Western Europe");
         assertEquals(c1.population, 82164700);
     }
 
@@ -181,16 +181,16 @@ public class AppIntegrationTest
     @Test
     void printUseCase4TestNull()
     {
-        app.printUseCase3(null);
-        app.getUseCase4(null,0);
+        app.printUseCase4(null);
+        app.getUseCase4(0);
     }
 
     @Test
     void printUseCase4TestEmpty()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase3(countries);
-        app.getUseCase4(" ", 0);
+        app.printUseCase4(countries);
+        app.getUseCase4(8);
     }
 
     @Test
@@ -198,8 +198,9 @@ public class AppIntegrationTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
-        app.printUseCase3(countries);
+        app.printUseCase4(countries);
     }
+
     @Test
     void printUseCase4TestValidData()
     {
@@ -208,8 +209,8 @@ public class AppIntegrationTest
         c1.name= "Germany";
         c1.population = 82164700;
         countries.add(c1);
-        app.printUseCase3(countries);
-        app.getUseCase4("Europe", 3);
+        app.printUseCase4(countries);
+        app.getUseCase4(3);
         assertEquals(c1.name, "Germany");
         assertEquals(c1.population, 82164700);
     }
@@ -220,16 +221,16 @@ public class AppIntegrationTest
     @Test
     void printUseCase5TestNull()
     {
-        app.printUseCase5(null);
-        app.getUseCase5();
+        app.printUseCase2(null);
+        app.getUseCase5(null,0);
     }
 
     @Test
     void printUseCase5TestEmpty()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase5(countries);
-        app.getUseCase5();
+        app.printUseCase2(countries);
+        app.getUseCase5(" ", 0);
     }
 
     @Test
@@ -237,21 +238,20 @@ public class AppIntegrationTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
-        app.printUseCase5(countries);
+        app.printUseCase2(countries);
     }
-
     @Test
     void printUseCase5TestValidData()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
         c1.name= "Germany";
-        c1.population= 83200000;
+        c1.population = 82164700;
         countries.add(c1);
-        app.printUseCase5(countries);
-        app.getUseCase5();
+        app.printUseCase2(countries);
+        app.getUseCase5("Europe", 3);
         assertEquals(c1.name, "Germany");
-        assertEquals(c1.population, 83200000);
+        assertEquals(c1.population, 82164700);
     }
 
     /**
@@ -260,7 +260,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase6TestNull()
     {
-        app.printUseCase5(null);
+        app.printUseCase3(null);
         app.getUseCase6(null, 0);
     }
 
@@ -268,7 +268,7 @@ public class AppIntegrationTest
     void printUseCase6TestEmpty()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase2(countries);
+        app.printUseCase3(countries);
         app.getUseCase6(" ", 0);
     }
 
@@ -277,7 +277,7 @@ public class AppIntegrationTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
-        app.printUseCase2(countries);
+        app.printUseCase3(countries);
     }
 
     @Test
@@ -289,7 +289,7 @@ public class AppIntegrationTest
         c1.region = "Western Europe";
         c1.population= 82164700;
         countries.add(c1);
-        app.printUseCase2(countries);
+        app.printUseCase3(countries);
         app.getUseCase6("Western Europe", 8);
         assertEquals(c1.name, "Germany");
         assertEquals(c1.region, "Western Europe");
@@ -388,6 +388,7 @@ public class AppIntegrationTest
         assertEquals(c1.population, 1194560);
     }
 
+
     /**
      * UseCase9
      */
@@ -425,17 +426,17 @@ public class AppIntegrationTest
     @Test
     void printUseCase9TestValidData()
     {
-        ArrayList<City> cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Paris";
-        c1.country = "France";
-        c1.population = 2125246;
-        cities.add(c1);
-        app.getUseCase9("France");
-        app.printUseCase9(cities);
-        assertEquals(c1.name, "Paris");
-        assertEquals(c1.country, "France");
-        assertEquals(c1.population,2125246 );
+        ArrayList<City> capital = new ArrayList<City>();
+        City c9 = new City();
+        c9.name= "Edinburgh";
+        c9.population= 558676;
+        c9.region= "Middle East";
+        capital.add(c9);
+        app.printUseCase9(capital);
+        app.getUseCase9("Middle East");
+        assertEquals(c9.name, "Edinburgh");
+        assertEquals(c9.population, 558676);
+        assertEquals(c9.region, "Middle East");
     }
 
     /**
@@ -471,20 +472,21 @@ public class AppIntegrationTest
         app.printUseCase10(cities);
         app.getUseCase10(null);
     }
+
     @Test
     void printUseCase10TestValidData()
     {
         ArrayList<City> cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Abu Dhabi";
-        c1.district = "Abu Dhabi";
-        c1.population = 398695;
-        cities.add(c1);
+        City c10 = new City();
+        c10.name = "Paris";
+        c10.country = "France";
+        c10.population = 2125246;
+        cities.add(c10);
+        app.getUseCase10("France");
         app.printUseCase10(cities);
-        app.getUseCase10("Abu Dhabi");
-        assertEquals(c1.name, "Abu Dhabi");
-        assertEquals(c1.district, "Abu Dhabi");
-        assertEquals(c1.population, 398695);
+        assertEquals(c10.name, "Paris");
+        assertEquals(c10.country, "France");
+        assertEquals(c10.population,2125246 );
     }
 
     /**
@@ -495,7 +497,7 @@ public class AppIntegrationTest
     {
 
         app.printUseCase11(null);
-        app.getUseCase11(0);
+        app.getUseCase11(null);
     }
 
     @Test
@@ -506,7 +508,7 @@ public class AppIntegrationTest
          */
         ArrayList<City> cities = new ArrayList<City>();
         app.printUseCase11(cities);
-        app.getUseCase11(0);
+        app.getUseCase11(" ");
     }
 
     @Test
@@ -518,20 +520,22 @@ public class AppIntegrationTest
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printUseCase11(cities);
-        app.getUseCase11(0);
+        app.getUseCase11(null);
     }
     @Test
     void printUseCase11TestValidData()
     {
         ArrayList<City> cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "London";
-        c1.population = 7285000;
-        cities.add(c1);
+        City c11 = new City();
+        c11.name = "Abu Dhabi";
+        c11.district = "Abu Dhabi";
+        c11.population = 398695;
+        cities.add(c11);
         app.printUseCase11(cities);
-        app.getUseCase11(4);
-        assertEquals(c1.name, "London");
-        assertEquals(c1.population, 7285000);
+        app.getUseCase11("Abu Dhabi");
+        assertEquals(c11.name, "Abu Dhabi");
+        assertEquals(c11.district, "Abu Dhabi");
+        assertEquals(c11.population, 398695);
     }
 
     /**
@@ -542,7 +546,7 @@ public class AppIntegrationTest
     {
 
         app.printUseCase12(null);
-        app.getUseCase12(0, null);
+        app.getUseCase12(0);
     }
 
     @Test
@@ -553,7 +557,7 @@ public class AppIntegrationTest
          */
         ArrayList<City> cities = new ArrayList<City>();
         app.printUseCase12(cities);
-        app.getUseCase12(0, " ");
+        app.getUseCase12(0);
     }
 
     @Test
@@ -565,23 +569,20 @@ public class AppIntegrationTest
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printUseCase12(cities);
-        app.getUseCase12(0, null);
+        app.getUseCase12(0);
     }
-    
     @Test
     void printUseCase12TestValidData()
     {
-        ArrayList<City>cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Amsterdam";
-        c1.continent = "Europe";
-        c1.population = 731200;
-        cities.add(c1);
+        ArrayList<City> cities = new ArrayList<>();
+        City c12 = new City();
+        c12.name = "London";
+        c12.population = 7285000;
+        cities.add(c12);
         app.printUseCase12(cities);
-        app.getUseCase12(4,"Western Europe");
-        assertEquals(c1.name, "Amsterdam");
-        assertEquals(c1.continent, "Europe");
-        assertEquals(c1.population, 731200);
+        app.getUseCase12(4);
+        assertEquals(c12.name, "London");
+        assertEquals(c12.population, 7285000);
     }
 
     /**
@@ -617,20 +618,21 @@ public class AppIntegrationTest
         app.printUseCase13(cities);
         app.getUseCase13(0, null);
     }
+    
     @Test
     void printUseCase13TestValidData()
     {
-        ArrayList<City> cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Madrid";
-        c1.region = "Southern Europe";
-        c1.population = 2879052;
-        cities.add(c1);
+        ArrayList<City>cities = new ArrayList<>();
+        City c13 = new City();
+        c13.name = "Amsterdam";
+        c13.continent = "Europe";
+        c13.population = 731200;
+        cities.add(c13);
         app.printUseCase13(cities);
-        app.getUseCase13(5,"Spain");
-        assertEquals(c1.name, "Madrid");
-        assertEquals(c1.population, 2879052);
-        assertEquals(c1.region, "Southern Europe");
+        app.getUseCase13(4,"Western Europe");
+        assertEquals(c13.name, "Amsterdam");
+        assertEquals(c13.continent, "Europe");
+        assertEquals(c13.population, 731200);
     }
 
     /**
@@ -670,16 +672,16 @@ public class AppIntegrationTest
     void printUseCase14TestValidData()
     {
         ArrayList<City> cities = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Glasgow";
-        c1.country = "Scotland";
-        c1.population = 619680;
-        cities.add(c1);
+        City c14 = new City();
+        c14.name = "Madrid";
+        c14.region = "Southern Europe";
+        c14.population = 2879052;
+        cities.add(c14);
         app.printUseCase14(cities);
-        app.getUseCase14(7, "Scotland");
-        assertEquals(c1.name, "Glasgow");
-        assertEquals(c1.country, "Scotland");
-        assertEquals(c1.population, 619680);
+        app.getUseCase14(5,"Spain");
+        assertEquals(c14.name, "Madrid");
+        assertEquals(c14.population, 2879052);
+        assertEquals(c14.region, "Southern Europe");
     }
 
     /**
@@ -715,21 +717,20 @@ public class AppIntegrationTest
         app.printUseCase15(cities);
         app.getUseCase15(0, null);
     }
-
     @Test
     void printUseCase15TestValidData()
     {
-        ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<City> cities = new ArrayList<>();
         City c15 = new City();
-        c15.name = "Munich";
-        c15.population = 1194560;
-        c15.district = "Baijeri";
+        c15.name = "Glasgow";
+        c15.country = "Scotland";
+        c15.population = 619680;
         cities.add(c15);
         app.printUseCase15(cities);
-        app.getUseCase15(2, "Baijeri");
-        assertEquals(c15.name, "Munich");
-        assertEquals(c15.population, 1194560);
-        assertEquals(c15.district, "Baijeri");;
+        app.getUseCase15(7, "Scotland");
+        assertEquals(c15.name, "Glasgow");
+        assertEquals(c15.country, "Scotland");
+        assertEquals(c15.population, 619680);
     }
 
     /**
@@ -740,7 +741,7 @@ public class AppIntegrationTest
     {
 
         app.printUseCase16(null);
-        app.getUseCase16();
+        app.getUseCase16(0, null);
     }
 
     @Test
@@ -749,9 +750,9 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data is empty
          */
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase16(countries);
-        app.getUseCase16();
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase16(cities);
+        app.getUseCase16(0, " ");
     }
 
     @Test
@@ -760,21 +761,26 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.printUseCase16(countries);
-        app.getUseCase16();
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase16(cities);
+        app.getUseCase16(0, null);
     }
+
     @Test
     void printUseCase16TestValidData()
     {
-        ArrayList<Country> capital = new ArrayList<>();
-        Country capital1 = new Country();
-        capital1.name = "Moscow";
-        capital1.population = 8389200;
-        capital.add(capital1);
-        app.printUseCase16(capital);
-        app.getUseCase16();
+        ArrayList<City> cities = new ArrayList<City>();
+        City c16 = new City();
+        c16.name = "Munich";
+        c16.population = 1194560;
+        c16.district = "Baijeri";
+        cities.add(c16);
+        app.printUseCase16(cities);
+        app.getUseCase16(2, "Baijeri");
+        assertEquals(c16.name, "Munich");
+        assertEquals(c16.population, 1194560);
+        assertEquals(c16.district, "Baijeri");;
     }
 
     /**
@@ -785,7 +791,7 @@ public class AppIntegrationTest
     {
 
         app.printUseCase17(null);
-        app.getUseCase17(0, null);
+        app.getUseCase17();
     }
 
     @Test
@@ -794,9 +800,9 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data is empty
          */
-        ArrayList<City> cities = new ArrayList<City>();
-        app.printUseCase17(cities);
-        app.getUseCase17(0, " ");
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printUseCase17(countries);
+        app.getUseCase17();
     }
 
     @Test
@@ -805,26 +811,21 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.printUseCase17(cities);
-        app.getUseCase17(0, " ");
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase17(countries);
+        app.getUseCase17();
     }
-
     @Test
     void printUseCase17TestValidData()
     {
-        ArrayList<City> capital = new ArrayList<City>();
-        City c17 = new City();
-        c17.name= "Edinburgh";
-        c17.population= 558676;
-        c17.country= "United Kingdom";
-        capital.add(c17);
+        ArrayList<Country> capital = new ArrayList<>();
+        Country capital17 = new Country();
+        capital17.name = "Moscow";
+        capital17.population = 8389200;
+        capital.add(capital17);
         app.printUseCase17(capital);
-        app.getUseCase17(3, "United Kingdom");
-        assertEquals(c17.name, "Edinburgh");
-        assertEquals(c17.population, 558676);
-        assertEquals(c17.country, "United Kingdom");
+        app.getUseCase17();
     }
 
     /**
@@ -860,6 +861,7 @@ public class AppIntegrationTest
         app.printUseCase18(countries);
         app.getUseCase18(" ");
     }
+
     @Test
     void printUseCase18TestValidData()
     {
@@ -867,13 +869,13 @@ public class AppIntegrationTest
         Country c18 = new Country();
         c18.name= "Edinburgh";
         c18.population= 558676;
-        c18.region="Lothian";
+        c18.continent = "Europe";
         capital.add(c18);
         app.printUseCase18(capital);
-        app.getUseCase18("Lothian");
+        app.getUseCase18("Europe");
         assertEquals(c18.name, "Edinburgh");
         assertEquals(c18.population, 558676);
-        assertEquals(c18.region, "Lothian");
+        assertEquals(c18.continent, "Europe");
     }
 
     /**
@@ -909,7 +911,6 @@ public class AppIntegrationTest
         app.printUseCase19(countries);
         app.getUseCase19(" ");
     }
-    
     @Test
     void printUseCase19TestValidData()
     {
@@ -917,13 +918,13 @@ public class AppIntegrationTest
         Country c19 = new Country();
         c19.name= "Edinburgh";
         c19.population= 558676;
-        c19.continent = "Europe";
+        c19.region="Lothian";
         capital.add(c19);
-        app.printUseCase1(capital);
-        app.getUseCase19("Europe");
+        app.printUseCase19(capital);
+        app.getUseCase19("Lothian");
         assertEquals(c19.name, "Edinburgh");
         assertEquals(c19.population, 558676);
-        assertEquals(c19.continent, "Europe");
+        assertEquals(c19.region, "Lothian");
     }
 
     /**
@@ -1112,19 +1113,19 @@ public class AppIntegrationTest
     @Test
     void printUseCase23TestValidData()
     {
-        ArrayList<Population> population = new ArrayList<Population>();
-        Population p23 = new Population();
-        p23.region= "Lothian";
-        p23.population= 10000;
-        p23.population_c= 7000;
-        p23.population_nc= 3000;
-        population.add(p23);
-        app.printUseCase23(population);
+        ArrayList<Population> populations = new ArrayList<>();
+        Population p25 = new Population();
+        p25.continent = "Africa";
+        p25.population = 558676;
+        p25.population_c = 7423432;
+        p25.population_nc = 2342;
+        populations.add(p25);
+        app.printUseCase23(populations);
         app.getUseCase23();
-        assertEquals(p23.region, "Lothian");
-        assertEquals(p23.population, 10000);
-        assertEquals(p23.population_c, 7000);
-        assertEquals(p23.population_nc, 3000);
+        assertEquals(p25.continent, "Africa");
+        assertEquals(p25.population, 558676);
+        assertEquals(p25.population_c, 7423432);
+        assertEquals(p25.population_nc, 2342);
     }
 
     /**
@@ -1165,18 +1166,18 @@ public class AppIntegrationTest
     void printUseCase24TestValidData()
     {
         ArrayList<Population> population = new ArrayList<Population>();
-        Population p24 = new Population();
-        p24.name= "United Kingdom";
-        p24.population= 10000;
-        p24.population_c= 7000;
-        p24.population_nc= 3000;
-        population.add(p24);
+        Population p23 = new Population();
+        p23.region= "Lothian";
+        p23.population= 10000;
+        p23.population_c= 7000;
+        p23.population_nc= 3000;
+        population.add(p23);
         app.printUseCase24(population);
         app.getUseCase24();
-        assertEquals(p24.name, "United Kingdom");
-        assertEquals(p24.population, 10000);
-        assertEquals(p24.population_c, 7000);
-        assertEquals(p24.population_nc, 3000);
+        assertEquals(p23.region, "Lothian");
+        assertEquals(p23.population, 10000);
+        assertEquals(p23.population_c, 7000);
+        assertEquals(p23.population_nc, 3000);
     }
 
     /**
@@ -1212,23 +1213,23 @@ public class AppIntegrationTest
         app.printUseCase25(populations);
         app.getUseCase25();
     }
-    
+
     @Test
     void printUseCase25TestValidData()
     {
-        ArrayList<Population> populations = new ArrayList<>();
-        Population p25 = new Population();
-        p25.continent = "Africa";
-        p25.population = 558676;
-        p25.population_c = 7423432;
-        p25.population_nc = 2342;
-        populations.add(p25);
-        app.printUseCase25(populations);
+        ArrayList<Population> population = new ArrayList<Population>();
+        Population p24 = new Population();
+        p24.name= "United Kingdom";
+        p24.population= 10000;
+        p24.population_c= 7000;
+        p24.population_nc= 3000;
+        population.add(p24);
+        app.printUseCase25(population);
         app.getUseCase25();
-        assertEquals(p25.continent, "Africa");
-        assertEquals(p25.population, 558676);
-        assertEquals(p25.population_c, 7423432);
-        assertEquals(p25.population_nc, 2342);
+        assertEquals(p24.name, "United Kingdom");
+        assertEquals(p24.population, 10000);
+        assertEquals(p24.population_c, 7000);
+        assertEquals(p24.population_nc, 3000);
     }
 
     /**
@@ -1259,10 +1260,10 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printUseCase24(populations);
-        app.getUseCase24();
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase26(countries);
+        app.getUseCase26();
     }
     
     @Test
@@ -1270,11 +1271,16 @@ public class AppIntegrationTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country c1 = new Country();
-        c1.total_population = 1412000000;
+        c1.name = "China";
+        c1.continent = "Asia";
+        c1.population = 1412000000;
         countries.add(c1);
         app.printUseCase26(countries);
         app.getUseCase26();
-        assertEquals(c1.total_population, 1412000000);
+        assertEquals(c1.name, "China");
+        assertEquals(c1.continent, "Asia");
+        assertEquals(c1.population, 1412000000);
+
     }
 
     /**
@@ -1283,7 +1289,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase27TestNull()
     {
-        app.printUseCase27(null, 0);
+        app.printUseCase27(null);
         app.getUseCase27(null);
     }
 
@@ -1294,7 +1300,7 @@ public class AppIntegrationTest
          *Test what the database does if the given data is empty
          */
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase27(" ", 0);
+        app.printUseCase27(countries);
         app.getUseCase27(" ");
     }
 
@@ -1304,18 +1310,24 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printUseCase27(null, 0);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase27(countries);
         app.getUseCase27(null);
     }
     
     @Test
     void printUseCase27TestValidData()
     {
-        long continentPopulation = app.getUseCase27("Europe");
-        app.printUseCase27("Europe", 730074600);
-        assertEquals(continentPopulation, 730074600);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.continent = "Europe";
+        c1.total_population = 1412000;
+        countries.add(c1);
+        app.printUseCase27(countries);
+        app.getUseCase27("Europe");
+        assertEquals(c1.continent, "Europe");
+        assertEquals(c1.total_population, 1412000);
     }
 
     /**
@@ -1324,7 +1336,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase28TestNull()
     {
-        app.printUseCase28(null, 0);
+        app.printUseCase28(null);
         app.getUseCase28(null);
     }
 
@@ -1335,7 +1347,7 @@ public class AppIntegrationTest
          *Test what the database does if the given data is empty
          */
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase28(" ", 0);
+        app.printUseCase28(countries);
         app.getUseCase28(" ");
     }
 
@@ -1345,18 +1357,24 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printUseCase28(null, 0);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase28(countries);
         app.getUseCase28(null);
     }
     
     @Test
     void printUseCase28TestValidData()
     {
-        long regionPopulation = app.getUseCase28("Western Europe");
-        app.printUseCase28("Western Europe", 183247600);
-        assertEquals(regionPopulation, 183247600);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.region = "Middle East";
+        c1.total_population = 141200000;
+        countries.add(c1);
+        app.printUseCase28(countries);
+        app.getUseCase28("Middle East");
+        assertEquals(c1.region, "Middle East");
+        assertEquals(c1.total_population,141200000);
     }
 
     /**
@@ -1365,7 +1383,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase29TestNull()
     {
-        app.printUseCase29(null, 0);
+        app.printUseCase29(null);
         app.getUseCase29(null);
     }
 
@@ -1376,7 +1394,7 @@ public class AppIntegrationTest
          *Test what the database does if the given data is empty
          */
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase29(" ", 0);
+        app.printUseCase29(countries);
         app.getUseCase29(" ");
     }
 
@@ -1386,18 +1404,24 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printUseCase29(null, 0);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printUseCase29(countries);
         app.getUseCase29(null);
     }
     
     @Test
     void printUseCase29TestValidData()
     {
-        long districtPopulation = app.getUseCase29("Central");
-        app.printUseCase29("Central", 2510408);
-        assertEquals(districtPopulation, 2510408);
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country c1 = new Country();
+        c1.name = "China";
+        c1.total_population = 1412000000;
+        countries.add(c1);
+        app.printUseCase29(countries);
+        app.getUseCase29("China");
+        assertEquals(c1.name, "China");
+        assertEquals(c1.total_population, 1412000000);
     }
 
     /**
@@ -1406,7 +1430,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase30TestNull()
     {
-        app.printUseCase30(null, 0);
+        app.printUseCase30(null);
         app.getUseCase30(null);
     }
 
@@ -1416,8 +1440,8 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data is empty
          */
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.printUseCase30(" ", 0);
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase30(cities);
         app.getUseCase30(" ");
     }
 
@@ -1427,18 +1451,24 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printUseCase30(null, 0);
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase30(cities);
         app.getUseCase30(null);
     }
     
     @Test
     void printUseCase30TestValidData()
     {
-        long countryPopulation = app.getUseCase30("France");
-        app.printUseCase30("France", 59225700);
-        assertEquals(countryPopulation, 59225700);
+        ArrayList<City> cities = new ArrayList<City>();
+        City c1 = new City();
+        c1.district = "Florida";
+        c1.population = 1412000000;
+        cities.add(c1);
+        app.printUseCase30(cities);
+        app.getUseCase30("Florida");
+        assertEquals(c1.district, "Florida");
+        assertEquals(c1.population, 1412000000);
     }
 
     /**
@@ -1447,7 +1477,7 @@ public class AppIntegrationTest
     @Test
     void printUseCase31TestNull()
     {
-        app.printCityPopulation(null, 0);
+        app.printUseCase31(null);
         app.getUseCase31(null);
     }
 
@@ -1457,8 +1487,8 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data is empty
          */
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.printCityPopulation(" ", 0);
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printUseCase31(cities);
         app.getUseCase31(" ");
     }
 
@@ -1468,18 +1498,24 @@ public class AppIntegrationTest
         /**
          *Test what the database does if the given data contains null
          */
-        ArrayList<Population> populations = new ArrayList<Population>();
-        populations.add(null);
-        app.printCityPopulation(null, 0);
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printUseCase31(cities);
         app.getUseCase31(null);
     }
 
     @Test
     void printUseCase31TestValidData()
     {
-        long cityPopulation = app.getUseCase31("Berlin");
-        app.printCityPopulation("Berlin", 3386667);
-        assertEquals(cityPopulation, 3386667);
+        ArrayList<City> cities = new ArrayList<City>();
+        City c1 = new City();
+        c1.name = "Edinburgh";
+        c1.population = 1412000000;
+        cities.add(c1);
+        app.printUseCase31(cities);
+        app.getUseCase31("Edinburgh");
+        assertEquals(c1.name, "Edinburgh");
+        assertEquals(c1.population, 1412000000);
     }
 
 }

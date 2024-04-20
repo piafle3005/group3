@@ -18,4 +18,6 @@ public class City {
     //The population of a city
     public int population;
 
+    public long total_population;
+
 }

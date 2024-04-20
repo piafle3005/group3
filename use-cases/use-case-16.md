@@ -1,10 +1,10 @@
-# USE CASE: 16 Report of all the capital cities in the world, organised by largest population to smallest.
+# USE CASE: 16 Report of all the top N populated cities in a district, where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the capital cities in the world, organised by largest population to smallest.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the top N populated cities in a specific district, with N provided by the user.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-Valid entry of capital cities.
+Valid entry of N.
 
 ### Success End Condition
 
@@ -32,18 +32,19 @@ Employee of the organisation.
 
 ### Trigger
 
-A request for the capital cities' information is sent to the organisation the report is being made for.
+A request for cities' information is sent to the organisation the report is being made for.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests population's information about all the capital cities in the world.
-2. Employee extracts current population's information of all the capital cities in the world.
-3. Employee provides the report to organisation.
+1. Employee requests population's information about the top N populated cities in the given district.
+2. Employee requests the N variable to get cities's information from.
+3. Employee extracts current population's information of the given N number of cities from the district given.
+4. Employee provides the report to organisation.
 
 ## EXTENSIONS
 
 3. **Invalid continent.**:
-    1. Employee is informed that the report can't be produced.
+    1. Employee is informed that the N variable and/or the district is invalid and report can't be produced.
 
 ## SUB-VARIATIONS
 

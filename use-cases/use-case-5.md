@@ -1,10 +1,10 @@
-# USE CASE: 5 Report of all the countries in the world organised by largest population to smallest.
+# USE CASE: 5 Report of the top N populated countries in a continent where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the countries in the world organised by largest population to smallest.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of the top N populated countries in a continent where N is provided by the user.
 
 ### Scope
 
@@ -16,15 +16,15 @@ Primary task.
 
 ### Preconditions
 
-Functionality of the reports. We don't require any input as this is just a complete list.
+Valid entry of N.
 
 ### Success End Condition
 
-The report is available. Correct functionality of the required reports.
+The report is available. Correct input and functionality of the required reports.
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the countries in the world.
+The report is not produced, and we didn't get the requested information about the populated countries.
 
 ### Primary Actor
 
@@ -36,15 +36,15 @@ A request for countries information is sent to the organisation the report is be
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee request country information for countries in the world.
-2. Employee request the country information.
-3. Employee extracts current country information of the world.
+1. Employee request country information for the top N countries in a continent.
+2. Employee request the population to get country information for the populated countries.
+3. Employee extracts current population information.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS
 
-3. **Invalid request.**:
-    1. Employee is informed that request is invalid.
+3. **Invalid N.**:
+    1. Employee is informed that the N is invalid.
 
 ## SUB-VARIATIONS
 

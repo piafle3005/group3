@@ -1,10 +1,10 @@
-# USE CASE: 2 Report of all the countries in a region organised by largest population to smallest.
+# USE CASE: 2 Report of all the countries in a continent organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the countries in a region organised by largest population to smallest.
+As an employee that is working for an organisation that requires reporting on population information I want to create a report of all the countries in a continent organised by largest population to smallest.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-Valid entry of a region.
+Valid entry of a continent.
 
 ### Success End Condition
 
@@ -24,7 +24,7 @@ The report is available. Correct input and functionality of the required reports
 
 ### Failed End Condition
 
-The report is not produced, and we didn't get the requested information about the countries in a region.
+The report is not produced, and we didn't get the requested information about the countries in a continent. 
 
 ### Primary Actor
 
@@ -36,15 +36,15 @@ A request for countries information is sent to the organisation the report is be
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee request country information for countries in a given region.
-2. Employee request the region to get country information for.
-3. Employee extracts current country information of the given region.
+1. Employee request country information for countries in a given continent.
+2. Employee request the continent to get country information for.
+3. Employee extracts current country information of the given continent.
 4. Employee provides the report to organisation.
 
 ## EXTENSIONS
-
-3. **Invalid region.**:
-   1. Employee is informed that the region is invalid and does not exist.
+   
+3. **Invalid continent.**:
+    1. Employee is informed that the continent is invalid and does not exist.
 
 ## SUB-VARIATIONS
 
